@@ -29,7 +29,7 @@ public class TripController {
 
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/trip/{id}")
     public Trip getTripById(@PathVariable int id) {
         return tripService.findTrip(id);
     }
