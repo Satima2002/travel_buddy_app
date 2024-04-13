@@ -18,10 +18,13 @@ public class TripService {
         return t;
     }
 
+    public TripEntity saveTrip(TripEntity trip){
+        return tripRepo.save(trip);
+    }
+
     public List<TripEntity> findAllTrips(){
         return tripRepo.findAll();
     }
-
 
 
 }

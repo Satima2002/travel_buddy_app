@@ -18,16 +18,18 @@ public class TripEntity {
     @Id
     private int ID;
     private int userID;
-    @JsonFormat (pattern = "dd-mm-yyyy")
+    private String firstName;
+    private String lstName;
     private String destCountry;
     private String destCity;
+    @JsonFormat (pattern = "dd-MM-yyyy")
     private Date startDate;
+    @JsonFormat (pattern = "dd-MM-yyyy")
     private Date endDate;
     private long budget;
     private String type;
     private String preferredTransport;
     private String description;
-
 
     public TripEntity() {
 
