@@ -1,6 +1,6 @@
 package com.example.travel_buddy_app.services;
 
-import com.example.travel_buddy_app.entities.TripEntity;
+import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.repositories.TripRepo;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +13,20 @@ public class TripService {
     @Autowired
     private TripRepo tripRepo;
 
-    public TripEntity findTrip(int id){
-        TripEntity t = tripRepo.findTripEntityByID(id).orElseThrow(EntityNotFoundException::new);
-        return t;
+    public Trip findTrip(int id){
+        return tripRepo.findTripEntityByID(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public TripEntity saveTrip(TripEntity trip){
+    public Trip saveTrip(Trip trip){
         return tripRepo.save(trip);
     }
 
-    public List<TripEntity> findAllTrips(){
+    public List<Trip> findAllTrips(){
         return tripRepo.findAll();
     }
 
+    public Trip saveTripPost(Trip trip){
+        return tripRepo.save(trip);
 
+    }
 }

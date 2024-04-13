@@ -1,6 +1,6 @@
 package com.example.travel_buddy_app.controllers;
 
-import com.example.travel_buddy_app.entities.TripEntity;
+import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.TripService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -17,20 +17,20 @@ public class TripController {
     private TripService tripService;
 
     @GetMapping("/trips-dashboard")
-    public List<TripEntity> findAllTrips(){
+    public List<Trip> findAllTrips(){
         return tripService.findAllTrips();
     }
 
     @PostMapping("/add-trip")
-    public TripEntity addTrip(@RequestBody String trip, @RequestParam(name="user_id") String user_id) throws JsonProcessingException {
+    public Trip addTrip(@RequestBody String trip, @RequestParam(name="user_id") String user_id) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
-        TripEntity t = mapper.readValue(trip, TripEntity.class);
+        Trip t = mapper.readValue(trip, Trip.class);
         return tripService.saveTrip(t);
 
     }
 
-    @GetMapping ("/find-trip")
-    public TripEntity findTrip(@RequestParam(name = "trip_id") int id){
+    @GetMapping("/{id}")
+    public Trip getTripById(@PathVariable int id) {
         return tripService.findTrip(id);
     }
 
