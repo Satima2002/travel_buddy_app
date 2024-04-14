@@ -36,7 +36,7 @@ id serial Primary Key,
 title varchar(50) not null,
 country varchar(50) not null,
 city varchar(50) not null,
-season_visited String not null,
+season_visited varchar(50) not null,
 description varchar(500) null,
 user_id int not null,
 FOREIGN KEY (user_id) references users(id) on delete cascade
