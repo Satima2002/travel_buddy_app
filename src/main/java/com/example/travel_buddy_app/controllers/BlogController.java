@@ -1,18 +1,18 @@
 package com.example.travel_buddy_app.controllers;
 
 import com.example.travel_buddy_app.entities.Blog;
-import com.example.travel_buddy_app.services.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
+import com.example.travel_buddy_app.services.BlogService;
 import java.util.List;
 
 @RestController
 @RequestMapping(path = "blogs")
 public class BlogController {
-    private final BlogService blogService;
 
     @Autowired
+    private final BlogService blogService;
+
     public BlogController(BlogService blogService) {
         this.blogService = blogService;
     }

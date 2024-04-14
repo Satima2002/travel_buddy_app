@@ -8,8 +8,8 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface TripRepository extends JpaRepository<Trip,Integer> {
-    @Query(name = "findTripByID", value = "select t from Trip t where t.ID=?1")
+public interface TripRepository extends JpaRepository<Trip,Long> {
+    @Query(name = "findTripByID", value = "select t from Trip t where t.id=?1")
     public Optional<Trip> findTripEntityByID(int ID);
 
 }

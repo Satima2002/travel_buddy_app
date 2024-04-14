@@ -1,9 +1,7 @@
 package com.example.travel_buddy_app.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -17,8 +15,9 @@ import java.util.Date;
 public class Trip {
 
     @Id
-    private int ID;
-    private int user_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private Long user_id;
     private String destinationCountry;
     private String destinationCity;
     @JsonFormat (pattern = "dd-MM-yyyy")
@@ -36,8 +35,8 @@ public class Trip {
     }
 
 
-    public Trip(int ID, int userid, String destinationCountry, String destinationCity, Date startDate, Date endDate, BigInteger budget, String typeName, String transportName, String description) {
-        this.ID = ID;
+    public Trip(Long ID, Long userid, String destinationCountry, String destinationCity, Date startDate, Date endDate, BigInteger budget, String typeName, String transportName, String description) {
+        this.id = ID;
         this.user_id = userid;
         this.destinationCountry = destinationCountry;
         this.destinationCity = destinationCity;
