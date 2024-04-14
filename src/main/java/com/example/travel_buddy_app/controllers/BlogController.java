@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "blog")
 public class BlogController {
     private final BlogService blogService;
 
@@ -17,7 +17,7 @@ public class BlogController {
         this.blogService = blogService;
     }
 
-    @GetMapping("/blogs-dashboard")
+    @GetMapping
     public List<Blog> findAllBlogs() {
         return blogService.findAllBlogs();
     }
