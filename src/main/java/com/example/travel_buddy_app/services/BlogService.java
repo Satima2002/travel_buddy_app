@@ -34,4 +34,12 @@ public class BlogService {
         blogRepository.save(blog);
     }
 
+    public void deleteBlogById(Long id) {
+        boolean exists = blogRepository.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("A blog with " + id + " does not exist");
+        }
+        blogRepository.deleteById(id);
+    }
+
 }

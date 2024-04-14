@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(path = "blog")
+@RequestMapping(path = "blogs")
 public class BlogController {
     private final BlogService blogService;
 
@@ -30,4 +30,10 @@ public class BlogController {
     public void addNewBlog(@RequestBody Blog blog) {
         blogService.addNewBlog(blog);
     }
+
+    @DeleteMapping(path = "{id}")
+    public void deleteBlogById(@PathVariable("id") Long id) {
+        blogService.deleteBlogById(id);
+    }
+
 }
