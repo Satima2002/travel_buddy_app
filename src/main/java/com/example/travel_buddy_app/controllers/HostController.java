@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "hosts")
 public class HostController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class HostController {
         return hostService.saveHost(t);
     }
 
-    @GetMapping("/host/{id}")
+    @GetMapping("{id}")
     public Host getHostById(@PathVariable int id) {
         return hostService.findHost(id);
     }
