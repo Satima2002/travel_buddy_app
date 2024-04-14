@@ -1,6 +1,7 @@
 package com.example.travel_buddy_app.config;
 
 
+import com.example.travel_buddy_app.service.UserService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
