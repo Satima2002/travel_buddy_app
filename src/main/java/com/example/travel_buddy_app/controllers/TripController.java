@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping
+@RequestMapping(path = "trips")
 public class TripController {
 
     @Autowired
     private TripService tripService;
 
-    @GetMapping("/trips-dashboard")
+    @GetMapping
     public List<Trip> findAllTrips(){
         return tripService.findAllTrips();
     }
@@ -29,7 +29,7 @@ public class TripController {
 
     }
 
-    @GetMapping("/trip/{id}")
+    @GetMapping("/{id}")
     public Trip getTripById(@PathVariable int id) {
         return tripService.findTrip(id);
     }
