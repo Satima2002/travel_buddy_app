@@ -1,6 +1,6 @@
 package com.example.travel_buddy_app.repositories;
 
-import com.example.travel_buddy_app.entities.Trip;
+import com.example.travel_buddy_app.entities.Blog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface TripRepo extends JpaRepository<Trip,Integer> {
-    @Query(name = "findTripByID", value = "select t from Trip t where t.ID=?1")
-    public Optional<Trip> findTripEntityByID(int ID);
-
+public interface BlogRepository extends JpaRepository<Blog, Long> {
+    @Query(name = "getBlogById", value = "SELECT b FROM Blog b WHERE b.id = ?1")
+    Optional<Blog> getBlogEntityById(Long id);
 }
