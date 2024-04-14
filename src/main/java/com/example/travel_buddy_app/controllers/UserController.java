@@ -1,15 +1,14 @@
-package com.example.travel_buddy_app.controller;
+package com.example.travel_buddy_app.controllers;
 
 
 import com.example.travel_buddy_app.dto.LoginDto;
 import com.example.travel_buddy_app.dto.SignUpDto;
-import com.example.travel_buddy_app.entity.User;
-import com.example.travel_buddy_app.repo.UserRepo;
-import com.example.travel_buddy_app.service.UserService;
+import com.example.travel_buddy_app.entities.User;
+import com.example.travel_buddy_app.repositories.UserRepo;
+import com.example.travel_buddy_app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.web.bind.annotation.*;
 
 //import com.springboot.blog.entity.Role;
 //import com.springboot.blog.entity.User;
@@ -17,10 +16,8 @@ import org.springframework.web.bind.annotation.*;
 //import com.springboot.blog.payload.SignUpDto;
 //import com.springboot.blog.repository.RoleRepository;
 //import com.springboot.blog.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;

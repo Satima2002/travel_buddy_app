@@ -1,4 +1,4 @@
-package com.example.travel_buddy_app.entity;
+package com.example.travel_buddy_app.entities;
 
 
 

@@ -1,8 +1,8 @@
-package com.example.travel_buddy_app.repo;
+package com.example.travel_buddy_app.repositories;
 
 
 
-import com.example.travel_buddy_app.entity.User;
+import com.example.travel_buddy_app.entities.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
