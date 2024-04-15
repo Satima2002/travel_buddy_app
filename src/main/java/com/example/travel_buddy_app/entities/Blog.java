@@ -13,11 +13,17 @@ public class Blog {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Column(name = "user_id")
     private Long userID;
+    @Column(name = "title")
     private String title;
+    @Column(name = "country")
     private String country;
+    @Column(name = "city")
     private String city;
+    @Column(name = "season_visited")
     private String seasonVisited;
+    @Column(name = "description")
     private String description;
 
     public Blog() {
