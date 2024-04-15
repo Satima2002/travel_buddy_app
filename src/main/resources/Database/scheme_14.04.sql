@@ -1,6 +1,7 @@
 -- create database travel_web_app
 create table users (
 id serial Primary Key,
+user_name varchar(50) not null,
 first_name varchar(50) not null,
 last_name varchar(50) not null,
 dob DATE not null,
