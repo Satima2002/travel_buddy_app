@@ -16,9 +16,9 @@ import java.util.Date;
 @Table(name="users")
 public class User {
     @Id
-    @Column(name="user_id")
+    @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long userId;
+    private Long id;
 
     @Column(name="user_name")
     private String userName;
@@ -49,13 +49,12 @@ public class User {
     private String description;
 
 
-
-    public Long getUserId() {
-        return userId;
+    public Long getId() {
+        return id;
     }
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUserName() {
