@@ -1,9 +1,9 @@
 -- create database travel_web_app
 create table users (
 id serial Primary Key,
-user_name varchar(50) not null,
 first_name varchar(50) not null,
 last_name varchar(50) not null,
+user_name varchar(50) not null,
 dob DATE not null,
 email varchar(50) not null,
 password varchar(50) not null,
@@ -13,9 +13,17 @@ description varchar(500) null
 
 --drop table users;
 --drop table trip;
---drop sequence trip_id_seq;
 --drop table blog;
 --drop table host;
+--
+--delete from trip;
+--delete from blog;
+--delete from host;
+--
+--drop sequence trip_id_seq;
+--drop sequence host_id_seq;
+--drop sequence blog_id_seq;
+--drop sequence blog_id_seq;
 
 create table trip (
 id serial Primary Key,
