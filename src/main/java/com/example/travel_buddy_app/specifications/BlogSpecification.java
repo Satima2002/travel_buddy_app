@@ -14,7 +14,7 @@ public class BlogSpecification {
 
     // specs for filtering
     public static Specification<Blog> seasonVisited(String seasonVisited) {
-        return (root, query, builder) -> builder.like(root.get("season"), "%" + seasonVisited + "%");
+        return (root, query, builder) -> builder.like(root.get("seasonVisited"), "%" + seasonVisited + "%");
     }
     public static Specification<Blog> inCountry(List<String> countries) {
         return (root, query, builder) -> root.get("country").in(countries);
