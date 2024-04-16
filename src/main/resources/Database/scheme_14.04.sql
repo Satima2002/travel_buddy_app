@@ -12,9 +12,16 @@ description varchar(500) null
 
 --drop table users;
 --drop table trip;
---drop sequence trip_id_seq;
 --drop table blog;
 --drop table host;
+--
+--delete from trip;
+--delete from blog;
+--delete from host;
+--
+--drop sequence trip_id_seq;
+--drop sequence host_id_seq;
+--drop sequence blog_id_seq;
 
 create table trip (
 id serial Primary Key,
