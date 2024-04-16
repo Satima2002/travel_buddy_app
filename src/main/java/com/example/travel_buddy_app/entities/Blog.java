@@ -13,8 +13,6 @@ public class Blog {
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "user_id")
-    private Long userID;
     @Column(name = "title")
     private String title;
     @Column(name = "country")
@@ -25,6 +23,8 @@ public class Blog {
     private String seasonVisited;
     @Column(name = "description")
     private String description;
+    @Column(name = "user_id")
+    private Long userID;
 
     public Blog() {
     }

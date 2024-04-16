@@ -11,12 +11,12 @@ import lombok.Setter;
 @AllArgsConstructor
 public class BlogDto {
     private Long id;
-    private Long userID;
     private String title;
     private String country;
     private String city;
     private String seasonVisited;
     private String description;
+    private Long userID;
 
     @Override
     public String toString() {
