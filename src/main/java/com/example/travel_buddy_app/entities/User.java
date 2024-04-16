@@ -13,26 +13,40 @@ import java.util.Date;
 @Data
 @Getter
 @Setter
-@Table(name="UserDetails")
+@Table(name="users")
 public class User {
     @Id
     @Column(name="user_id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long userId;
+
     @Column(name="user_name")
     private String userName;
-    @Column(name="user_surname")
-    private String userSurname;
-    @Column(name="user_dob")
+
+    @Column(name="first_name")
+    private String firstName;
+
+    @Column(name="last_name")
+    private String lastName;
+
+    @Column(name="dob")
     private Date dob;
-    @Column(name="user_email")
-    private String userEmail;
 
-    @Column(name="user_password")
-    private String userPassword;
+    @Column(name="email")
+    private String email;
 
-    @Column(name="user_description")
-    private String userDescription;
+//    @Column(name="age")
+//    private String age;
+
+
+    @Column(name="password")
+    private String password;
+
+    @Column(name="profile_photo")
+    private String profilePhoto;
+
+    @Column(name="description")
+    private String description;
 
 
 
@@ -52,12 +66,20 @@ public class User {
         this.userName = userName;
     }
 
-    public String getUserSurname() {
-        return userSurname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Date getDob() {
@@ -68,27 +90,44 @@ public class User {
         this.dob = dob;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+//    public String getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(String age) {
+//        this.age = age;
+//    }
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserDescription() {
-        return userDescription;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 
-    public void setUserDescription(String userDescription) {
-        this.userDescription = userDescription;
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
+

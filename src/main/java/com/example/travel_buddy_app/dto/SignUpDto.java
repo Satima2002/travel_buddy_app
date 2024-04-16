@@ -2,6 +2,7 @@ package com.example.travel_buddy_app.dto;
 
 
 import lombok.*;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -14,11 +15,14 @@ import java.util.Date;
 public class SignUpDto {
 
     private String userName;
-    private String userSurname;
+    private String firstName;
+    private String lastName;
     private Date dob;
-    private String userEmail;
-    private String userPassword;
-    private String userDescription;
+    private String email;
+    // private int age;
+    private String password;
+    private String profilePhoto;
+    private String description;
 
     public String getUserName() {
         return userName;
@@ -28,12 +32,20 @@ public class SignUpDto {
         this.userName = userName;
     }
 
-    public String getUserSurname() {
-        return userSurname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setUserSurname(String userSurname) {
-        this.userSurname = userSurname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Date getDob() {
@@ -44,27 +56,43 @@ public class SignUpDto {
         this.dob = dob;
     }
 
-    public String getUserEmail() {
-        return userEmail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserEmail(String userEmail) {
-        this.userEmail = userEmail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
-    public String getUserPassword() {
-        return userPassword;
+//    public int getAge() {
+//        return age;
+//    }
+//
+//    public void setAge(int age) {
+//        this.age = age;
+//    }
+
+    public String getPassword() {
+        return password;
     }
 
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
-    public String getUserDescription() {
-        return userDescription;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 
-    public void setUserDescription(String userDescription) {
-        this.userDescription = userDescription;
+    public void setProfilePhoto(String profilePhoto) {
+        this.profilePhoto = profilePhoto;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
