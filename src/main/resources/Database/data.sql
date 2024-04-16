@@ -30,16 +30,16 @@ select * from trip;
 
 INSERT INTO blog (title, country, city, season_visited, description, user_id)
 VALUES
-    ('My Trip to Paris', 'France', 'Paris', '2023-05-15', 'Visited famous landmarks in Paris.', 1),
-    ('Exploring Rome', 'Italy', 'Rome', '2023-07-20', 'Sightseeing in Rome.', 2),
-    ('Beach Vacation in Bali', 'Indonesia', 'Bali', '2023-10-10', 'Relaxing on the beautiful beaches of Bali.', 3),
-    ('Hiking in the Swiss Alps', 'Switzerland', 'Interlaken', '2023-08-05', 'Adventurous hike in the Alps.', 4),
-    ('Cultural Tour of Kyoto', 'Japan', 'Kyoto', '2023-11-30', 'Exploring temples and traditional culture in Kyoto.', 5),
-    ('City Break in New York', 'USA', 'New York', '2023-04-25', 'Exploring the vibrant city of New York.', 6),
-    ('Road Trip in Australia', 'Australia', 'Sydney', '2023-09-15', 'Exploring the beautiful landscapes of Australia.', 7),
-    ('Winter Holiday in Lapland', 'Finland', 'Rovaniemi', '2023-12-20', 'Meeting Santa Claus in Lapland.', 8),
-    ('Backpacking in Southeast Asia', 'Thailand', 'Bangkok', '2023-06-10', 'Traveling through Southeast Asia on a budget.', 9),
-    ('Cruise in the Caribbean', 'Caribbean', 'Caribbean Islands', '2023-02-15', 'Relaxing cruise in the Caribbean Sea.', 10);
+    ('My Trip to Paris', 'France', 'Paris', 'summer', 'Visited famous landmarks in Paris.', 1),
+    ('Exploring Rome', 'Italy', 'Rome', 'spring', 'Sightseeing in Rome.', 2),
+    ('Beach Vacation in Bali', 'Indonesia', 'Bali', 'winter', 'Relaxing on the beautiful beaches of Bali.', 3),
+    ('Hiking in the Swiss Alps', 'Switzerland', 'Interlaken', 'autumn', 'Adventurous hike in the Alps.', 4),
+    ('Cultural Tour of Kyoto', 'Japan', 'Kyoto', 'summer', 'Exploring temples and traditional culture in Kyoto.', 5),
+    ('City Break in New York', 'USA', 'New York', 'spring', 'Exploring the vibrant city of New York.', 6),
+    ('Road Trip in Australia', 'Australia', 'Sydney', 'summer', 'Exploring the beautiful landscapes of Australia.', 7),
+    ('Winter Holiday in Lapland', 'Finland', 'Rovaniemi', 'spring', 'Meeting Santa Claus in Lapland.', 8),
+    ('Backpacking in Southeast Asia', 'Thailand', 'Bangkok', 'autumn', 'Traveling through Southeast Asia on a budget.', 9),
+    ('Cruise in the Caribbean', 'Caribbean', 'Caribbean Islands', 'autumn', 'Relaxing cruise in the Caribbean Sea.', 10);
 
 select * from blog;
 
