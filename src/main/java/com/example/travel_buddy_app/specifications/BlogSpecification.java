@@ -12,6 +12,7 @@ public class BlogSpecification {
     public BlogSpecification() {
     }
 
+    // specs for filtering
     public static Specification<Blog> seasonVisited(String seasonVisited) {
         return (root, query, builder) -> builder.like(root.get("season"), "%" + seasonVisited + "%");
     }

@@ -53,12 +53,13 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
+    // for filtering
     public List<BlogDto> findAll(String seasonVisited,  List<String>countries, List<String> cities) {
         Specification<Blog> filters = Specification.where(StringUtils.isBlank(seasonVisited) ? null : seasonVisited(seasonVisited))
                 .and(CollectionUtils.isEmpty(countries) ? null : inCountry(countries))
                 .and(CollectionUtils.isEmpty(cities) ? null : inCity(cities));
 
-        // User our created Specification to query our repository
+        // query execution and retrieving the list of entities on specified filters from the repository
         return blogRepository.findAll(filters)
                 .stream()
                 .map(blogMapper::toDto)
