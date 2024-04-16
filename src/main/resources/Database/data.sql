@@ -1,15 +1,15 @@
-INSERT INTO users (first_name, last_name, dob, email, password, profile_photo, description)
+INSERT INTO users (first_name, last_name,user_name, dob, email, password, profile_photo, description)
 VALUES
-    ('John', 'Doe', '1990-05-15', 'john.doe@example.com', 'password123', '{"url": "https://example.com/photo1.jpg"}', 'Some description 1'),
-    ('Alice', 'Smith', '1985-09-20', 'alice.smith@example.com', 'p@ssw0rd', '{"url": "https://example.com/photo2.jpg"}', 'Some description 2'),
-    ('Bob', 'Johnson', '1992-03-10', 'bob.johnson@example.com', 'securepassword', '{"url": "https://example.com/photo3.jpg"}', 'Some description 3'),
-    ('Bob', 'Brown', '1993-04-04', 'bob.brown@example.com', 'passwordabc', '{"url": "https://example.com/photo4.jpg"}', 'Description 4'),
-    ('Eva', 'Williams', '1994-05-05', 'eva.williams@example.com', 'passworddef', '{"url": "https://example.com/photo5.jpg"}', 'Description 5'),
-    ('Michael', 'Jones', '1995-06-06', 'michael.jones@example.com', 'passwordghi', '{"url": "https://example.com/photo6.jpg"}', 'Description 6'),
-    ('Sophia', 'Davis', '1996-07-07', 'sophia.davis@example.com', 'passwordjkl', '{"url": "https://example.com/photo7.jpg"}', 'Description 7'),
-    ('Daniel', 'Miller', '1997-08-08', 'daniel.miller@example.com', 'passwordmno', '{"url": "https://example.com/photo8.jpg"}', 'Description 8'),
-    ('Olivia', 'Wilson', '1998-09-09', 'olivia.wilson@example.com', 'passwordpqr', '{"url": "https://example.com/photo9.jpg"}', 'Description 9'),
-    ('William', 'Taylor', '1999-10-10', 'william.taylor@example.com', 'passwordstu', '{"url": "https://example.com/photo10.jpg"}', 'Description 10');
+    ('John', 'Doe','userJ', '1990-05-15', 'john.doe@example.com', 'password123', '{"url": "https://example.com/photo1.jpg"}', 'Some description 1'),
+    ('Alice', 'Smith','userA', '1985-09-20', 'alice.smith@example.com', 'p@ssw0rd', '{"url": "https://example.com/photo2.jpg"}', 'Some description 2'),
+    ('Bob', 'Johnson','userB', '1992-03-10', 'bob.johnson@example.com', 'securepassword', '{"url": "https://example.com/photo3.jpg"}', 'Some description 3'),
+    ('Bob', 'Brown', 'userL','1993-04-04', 'bob.brown@example.com', 'passwordabc', '{"url": "https://example.com/photo4.jpg"}', 'Description 4'),
+    ('Eva', 'Williams', 'userE','1994-05-05' , 'eva.williams@example.com', 'passworddef', '{"url": "https://example.com/photo5.jpg"}', 'Description 5'),
+    ('Michael', 'Jones','userM', '1995-06-06', 'michael.jones@example.com', 'passwordghi', '{"url": "https://example.com/photo6.jpg"}', 'Description 6'),
+    ('Sophia', 'Davis', 'userJ', '1996-07-07', 'sophia.davis@example.com', 'passwordjkl', '{"url": "https://example.com/photo7.jpg"}', 'Description 7'),
+    ('Daniel', 'Miller', 'userK','1997-08-08', 'daniel.miller@example.com', 'passwordmno', '{"url": "https://example.com/photo8.jpg"}', 'Description 8'),
+    ('Olivia', 'Wilson', 'userW','1998-09-09', 'olivia.wilson@example.com', 'passwordpqr', '{"url": "https://example.com/photo9.jpg"}', 'Description 9'),
+    ('William', 'Taylor', 'userT','1999-10-10', 'william.taylor@example.com', 'passwordstu', '{"url": "https://example.com/photo10.jpg"}', 'Description 10');
 
 select * from users;
 
