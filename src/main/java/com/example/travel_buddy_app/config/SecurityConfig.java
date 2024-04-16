@@ -2,6 +2,7 @@ package com.example.travel_buddy_app.config;
 
 
 import com.example.travel_buddy_app.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -15,6 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 @EnableWebSecurity
 @Configuration
 public class SecurityConfig {
+    @Autowired
 
     private UserService userService;
 
@@ -50,13 +52,13 @@ public class SecurityConfig {
 //                                .anyRequest().authenticated()
 
 //                );
-        http
-                .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests((authorize) ->
-                        authorize.requestMatchers("/api/**").permitAll()
-                                .requestMatchers("/api/auth/**").permitAll()
-                                .anyRequest().authenticated()
-                );
+        //http
+          //      .csrf(csrf -> csrf.disable())
+            //    .authorizeHttpRequests((authorize) ->
+              //          authorize.requestMatchers("/api/**").permitAll()
+                //                .requestMatchers("/api/auth/**").permitAll()
+                  //              .anyRequest().authenticated()
+                //);
 //        http
 //                .csrf(csrf -> csrf.disable())
 //                .authorizeRequests((authorize) ->
@@ -64,6 +66,16 @@ public class SecurityConfig {
 //                                .requestMatchers("/api/auth/**").permitAll()
 //                                .anyRequest().authenticated()
 //                );
+        http
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests((authorize) ->
+                        authorize.requestMatchers("/api/**").permitAll()
+                                .requestMatchers("/api/auth/**").permitAll()
+                                .requestMatchers("/blogs/**").permitAll()
+                                .requestMatchers("/trips/**").permitAll()
+                                .requestMatchers("/hosts/**").permitAll()
+                                .anyRequest().authenticated()
+                );
 
         return http.build();
     }
