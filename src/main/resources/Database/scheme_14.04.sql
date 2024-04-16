@@ -23,6 +23,7 @@ description varchar(500) null
 --drop sequence trip_id_seq;
 --drop sequence host_id_seq;
 --drop sequence blog_id_seq;
+--drop sequence blog_id_seq;
 
 create table trip (
 id serial Primary Key,
