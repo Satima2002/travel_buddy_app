@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 public enum Season {
+
     WINTER("winter"),
     SUMMER("summer"),
     SPRING("spring"),

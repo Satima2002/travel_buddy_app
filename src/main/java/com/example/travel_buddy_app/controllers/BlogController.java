@@ -78,6 +78,36 @@ public class BlogController {
         return ResponseEntity.ok().build();
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateDescription(@PathVariable Long id, @RequestBody String newDescription) {
+//        if (newTitle == null || newTitle.isEmpty()) {
+//            return ResponseEntity.badRequest().build();
+//        }
+
+        blogService.updateDescription(id, newDescription);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateCountry(@PathVariable Long id, @RequestBody String newCountry) {
+//        if (newTitle == null || newTitle.isEmpty()) {
+//            return ResponseEntity.badRequest().build();
+//        }
+
+        blogService.updateCountry(id, newCountry);
+        return ResponseEntity.ok().build();
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateCity(@PathVariable Long id, @RequestBody String newCity) {
+//        if (newTitle == null || newTitle.isEmpty()) {
+//            return ResponseEntity.badRequest().build();
+//        }
+
+        blogService.updateCity(id, newCity);
+        return ResponseEntity.ok().build();
+    }
+
 //    /filter?seasonVisited=winter: Retrieves blogs visited in the winter season.
 //    /filter?countries=USA&cities=New+York: Retrieves blogs from the USA, specifically from New York City.
 //    /filter?seasonVisited=summer&countries=France: Retrieves blogs visited in the summer season and located in France.
