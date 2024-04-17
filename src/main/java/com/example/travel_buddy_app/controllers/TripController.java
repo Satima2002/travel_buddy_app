@@ -36,6 +36,10 @@ public class TripController {
             return ResponseEntity.noContent().build();
         }
     }
+    @DeleteMapping("/{id}")
+    public void deleteBlogById(@PathVariable("id") Long id) {
+        tripService.deleteTripById(id);
+    }
 
 
     @GetMapping("/{id}")

@@ -3,10 +3,12 @@ package com.example.travel_buddy_app.controllers;
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.dto.HostDto;
 import com.example.travel_buddy_app.entities.Host;
+import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.HostService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -44,6 +46,15 @@ public class HostController {
     public List<HostDto> findAll(@RequestParam(required = false) List<String> countries,
                                      @RequestParam(required = false) List<String> cities) {
         return hostService.findAll(countries, cities);
+    }
+    @GetMapping("/search-host")
+    public ResponseEntity<List<Host>> searchHosts(@RequestParam String searchText) {
+        List<Host> foundHosts = hostService.searchHosts(searchText);
+        if (!foundHosts.isEmpty()) {
+            return ResponseEntity.ok(foundHosts);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
     }
 
 }

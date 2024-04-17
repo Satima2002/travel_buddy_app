@@ -27,8 +27,12 @@ public class TripService {
         return tripRepo.findTripEntityByID(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public Trip saveTrip(Trip trip){
-        return tripRepo.save(trip);
+    public void deleteTripById(Long id) {
+        boolean exists = tripRepo.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("The trip with " + id + " does not exist");
+        }
+        tripRepo.deleteById(id);
     }
 
     public List<Trip> findAllTrips(){
@@ -45,4 +49,5 @@ public class TripService {
     public List<Trip> searchTrips(String searchText) {
         return tripRepo.findTripsBySearchText(searchText);
     }
+
 }
