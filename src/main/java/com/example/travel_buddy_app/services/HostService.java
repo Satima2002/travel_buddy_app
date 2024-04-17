@@ -40,10 +40,6 @@ public class HostService {
         return hostRepo.findAll();
     }
 
-    public Host saveHostPost(Host host){
-        return hostRepo.save(host);
-
-    }
 
     // for filtering
     public List<HostDto> findAll(List<String>countries, List<String> cities) {

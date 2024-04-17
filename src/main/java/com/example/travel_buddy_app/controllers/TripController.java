@@ -1,5 +1,6 @@
 package com.example.travel_buddy_app.controllers;
 
+import com.example.travel_buddy_app.entities.Blog;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.TripService;
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -22,15 +23,12 @@ public class TripController {
     }
 
     @PostMapping("/add-trip")
-    public Trip addTrip(@RequestBody String trip, @RequestParam(name="user_id") String user_id) throws JsonProcessingException {
-        ObjectMapper mapper = new ObjectMapper();
-        Trip t = mapper.readValue(trip, Trip.class);
-        return tripService.saveTrip(t);
-
+    public void addNewTrip(@RequestBody Trip trip) {
+        tripService.addNewTrip(trip);
     }
 
     @GetMapping("/{id}")
-    public Trip getTripById(@PathVariable int id) {
+    public Trip getTripById(@PathVariable Long id) {
         return tripService.findTrip(id);
     }
 
