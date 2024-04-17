@@ -34,11 +34,6 @@ public class BlogController {
         return blogService.getBlogById(id);
     }
 
-//    @PostMapping("/add-blog")
-//    public void addNewBlog(@RequestBody Blog blog) {
-//        blogService.addNewBlog(blog);
-//    }
-
     @PostMapping("/add-blog")
     public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
         try {
@@ -56,11 +51,9 @@ public class BlogController {
 
             blogService.addNewBlog(blog);
             return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
-//            return ResponseEntity.badRequest().body("Title, country, city, and seasonVisited are required fields.");
         }  catch (IllegalArgumentException ex) {
             return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
 //            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
-//            return ResponseEntity.badRequest().body("Invalid season value. Allowed values: winter, summer, spring, autumn.");
         }
     }
 
