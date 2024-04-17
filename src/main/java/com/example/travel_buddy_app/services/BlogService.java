@@ -51,6 +51,13 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
+    public void updateTitle(Long id, String newTitle) {
+        Blog blog = blogRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
+        blog.setTitle(newTitle);
+        blogRepository.save(blog);
+    }
+
     // for filtering
     public List<BlogDto> findAll(String seasonVisited,  List<String>countries, List<String> cities) {
         Specification<Blog> filters = Specification.where(StringUtils.isBlank(seasonVisited) ? null : seasonVisited(seasonVisited))
@@ -64,5 +71,7 @@ public class BlogService {
                 .toList();
 
     }
+
+
 
 }

@@ -2,10 +2,14 @@ package com.example.travel_buddy_app.controllers;
 
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.entities.Blog;
+import com.example.travel_buddy_app.enums.Season;
+import com.example.travel_buddy_app.errors.CustomErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.example.travel_buddy_app.services.BlogService;
 import java.util.List;
@@ -30,14 +34,49 @@ public class BlogController {
         return blogService.getBlogById(id);
     }
 
+//    @PostMapping("/add-blog")
+//    public void addNewBlog(@RequestBody Blog blog) {
+//        blogService.addNewBlog(blog);
+//    }
+
     @PostMapping("/add-blog")
-    public void addNewBlog(@RequestBody Blog blog) {
-        blogService.addNewBlog(blog);
+    public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
+        try {
+            if (blog.getTitle() == null || blog.getTitle().isEmpty() ||
+                    blog.getCountry() == null || blog.getCountry().isEmpty() ||
+                    blog.getCity() == null || blog.getCity().isEmpty()) {
+                return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
+            }
+
+            Season seasonVisited = blog.getSeasonVisited();
+            if (seasonVisited != null && !isValidSeason(seasonVisited)) {
+                return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
+            }
+
+            blogService.addNewBlog(blog);
+            return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
+//            return ResponseEntity.badRequest().body("Title, country, city, and seasonVisited are required fields.");
+        }  catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
+//            return ResponseEntity.badRequest().body("Invalid season value. Allowed values: winter, summer, spring, autumn.");
+        }
     }
+
+    private boolean isValidSeason(Season season) {
+        return season == Season.WINTER || season == Season.SUMMER ||
+                season == Season.SPRING || season == Season.AUTUMN;
+    }
+
 
     @DeleteMapping("/{id}")
     public void deleteBlogById(@PathVariable("id") Long id) {
         blogService.deleteBlogById(id);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Void> updateTitle(@PathVariable Long id, @RequestBody String newTitle) {
+        blogService.updateTitle(id, newTitle);
+        return ResponseEntity.ok().build();
     }
 
 //    /filter?seasonVisited=winter: Retrieves blogs visited in the winter season.
