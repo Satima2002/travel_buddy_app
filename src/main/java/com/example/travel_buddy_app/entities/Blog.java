@@ -20,7 +20,7 @@ public class Blog {
     private String country;
     @Column(name = "city")
     private String city;
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = "season_visited")
     private Season seasonVisited;
     @Column(name = "description")
