@@ -32,3 +32,5 @@ secrets.properties
 
 ### VS Code ###
 .vscode/
+
+node_modules/
