@@ -42,4 +42,7 @@ public class TripService {
         }
         tripRepo.save(trip);
     }
+    public List<Trip> searchTrips(String searchText) {
+        return tripRepo.findTripsBySearchText(searchText);
+    }
 }
