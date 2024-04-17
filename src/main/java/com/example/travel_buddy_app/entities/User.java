@@ -35,8 +35,8 @@ public class User {
     @Column(name="email")
     private String email;
 
-//    @Column(name="age")
-//    private String age;
+     @Column(name="gender")
+     private String gender;
 
 
     @Column(name="password")
@@ -97,13 +97,13 @@ public class User {
         this.email = email;
     }
 
-//    public String getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(String age) {
-//        this.age = age;
-//    }
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getPassword() {
         return password;
