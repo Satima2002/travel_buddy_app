@@ -32,4 +32,60 @@ public class HostDto {
                 ", user_id=" + user_id +
                 '}';
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public Date getAvailableStartDate() {
+        return availableStartDate;
+    }
+
+    public void setAvailableStartDate(Date availableStartDate) {
+        this.availableStartDate = availableStartDate;
+    }
+
+    public Date getAvailableEndDate() {
+        return availableEndDate;
+    }
+
+    public void setAvailableEndDate(Date availableEndDate) {
+        this.availableEndDate = availableEndDate;
+    }
+
+    public String getHouseType() {
+        return houseType;
+    }
+
+    public void setHouseType(String houseType) {
+        this.houseType = houseType;
+    }
+
+    public Long getUser_id() {
+        return user_id;
+    }
+
+    public void setUser_id(Long user_id) {
+        this.user_id = user_id;
+    }
 }
