@@ -2,7 +2,13 @@ package com.example.travel_buddy_app.dto;
 
 
 import lombok.*;
+import org.antlr.v4.runtime.misc.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
+
+import org.springframework.validation.*;
+
+import java.util.Date;
+
 
 import java.util.Date;
 
@@ -14,13 +20,16 @@ import java.util.Date;
 @NoArgsConstructor
 public class SignUpDto {
 
+
     private String userName;
     private String firstName;
     private String lastName;
     private Date dob;
     private String email;
-    // private int age;
+    private String gender;
     private String password;
+    private String confirmPassword;
+
     private String profilePhoto;
     private String description;
 
@@ -64,13 +73,13 @@ public class SignUpDto {
         this.email = email;
     }
 
-//    public int getAge() {
-//        return age;
-//    }
-//
-//    public void setAge(int age) {
-//        this.age = age;
-//    }
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
 
     public String getPassword() {
         return password;
@@ -78,6 +87,14 @@ public class SignUpDto {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getConfirmPassword() {
+        return confirmPassword;
+    }
+
+    public void setConfirmPassword(String confirmPassword) {
+        this.confirmPassword = confirmPassword;
     }
 
     public String getProfilePhoto() {
