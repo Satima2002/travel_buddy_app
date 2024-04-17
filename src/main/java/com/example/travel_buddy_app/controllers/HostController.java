@@ -1,12 +1,7 @@
 package com.example.travel_buddy_app.controllers;
-
-import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.dto.HostDto;
 import com.example.travel_buddy_app.entities.Host;
-import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.HostService;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

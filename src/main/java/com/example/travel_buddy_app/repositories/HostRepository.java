@@ -1,8 +1,5 @@
 package com.example.travel_buddy_app.repositories;
-
-import com.example.travel_buddy_app.entities.Blog;
 import com.example.travel_buddy_app.entities.Host;
-import com.example.travel_buddy_app.entities.Trip;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.domain.Specification;
