@@ -44,7 +44,8 @@ public class BlogController {
         try {
             if (blog.getTitle() == null || blog.getTitle().isEmpty() ||
                     blog.getCountry() == null || blog.getCountry().isEmpty() ||
-                    blog.getCity() == null || blog.getCity().isEmpty()) {
+                    blog.getCity() == null || blog.getCity().isEmpty() ||
+                    blog.getSeasonVisited() == null){
                 return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
             }
 
@@ -57,7 +58,8 @@ public class BlogController {
             return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
 //            return ResponseEntity.badRequest().body("Title, country, city, and seasonVisited are required fields.");
         }  catch (IllegalArgumentException ex) {
-            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
+            return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
+//            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
 //            return ResponseEntity.badRequest().body("Invalid season value. Allowed values: winter, summer, spring, autumn.");
         }
     }
