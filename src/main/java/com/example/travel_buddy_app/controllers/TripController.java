@@ -6,6 +6,7 @@ import com.example.travel_buddy_app.services.TripService;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,16 @@ public class TripController {
     public void addNewTrip(@RequestBody Trip trip) {
         tripService.addNewTrip(trip);
     }
+    @GetMapping("/search-trip")
+    public ResponseEntity<List<Trip>> searchTrips(@RequestParam String searchText) {
+        List<Trip> foundTrips = tripService.searchTrips(searchText);
+        if (!foundTrips.isEmpty()) {
+            return ResponseEntity.ok(foundTrips);
+        } else {
+            return ResponseEntity.noContent().build();
+        }
+    }
+
 
     @GetMapping("/{id}")
     public Trip getTripById(@PathVariable Long id) {
