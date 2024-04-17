@@ -14,25 +14,32 @@ import java.util.Date;
 public class Host {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
-    private long user_id;
-    private String city;
+    @Column(name = "id")
+    private Long id;
+    @Column(name = "country")
     private String country;
+    @Column(name = "city")
+    private String city;
     @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "available_start_date")
     private Date availableStartDate;
     @JsonFormat(pattern = "dd-MM-yyyy")
+    @Column(name = "available_end_date")
     private Date availableEndDate;
+    @Column(name = "house_type")
     private String houseType;
+    @Column(name = "user_id")
+    private Long user_id;
 
 
-    public Host(int id, long user_id, String city, String country, Date availableStartDate, Date availableEndDate, String houseType) {
+    public Host(Long id, String country, String city, Date availableStartDate, Date availableEndDate, String houseType, Long user_id) {
         this.id = id;
-        this.user_id = user_id;
-        this.city = city;
         this.country = country;
+        this.city = city;
         this.availableStartDate = availableStartDate;
         this.availableEndDate = availableEndDate;
         this.houseType = houseType;
+        this.user_id = user_id;
     }
 
     public Host() {

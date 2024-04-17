@@ -6,13 +6,11 @@ import com.example.travel_buddy_app.mappers.BlogMapper;
 import com.example.travel_buddy_app.repositories.BlogRepository;
 import io.micrometer.common.util.StringUtils;
 import jakarta.persistence.EntityNotFoundException;
-import org.hibernate.query.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
-import java.awt.print.Pageable;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +31,7 @@ public class BlogService {
         return blogRepository.findAll();
     }
 
-    public Blog getBlogById(long id) {
+    public Blog getBlogById(Long id) {
         return blogRepository.getBlogEntityById(id).orElseThrow(EntityNotFoundException::new);
     }
 
