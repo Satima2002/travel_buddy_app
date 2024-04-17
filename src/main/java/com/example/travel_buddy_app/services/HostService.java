@@ -2,6 +2,7 @@ package com.example.travel_buddy_app.services;
 
 import com.example.travel_buddy_app.dto.HostDto;
 import com.example.travel_buddy_app.entities.Host;
+import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.mappers.HostMapper;
 import com.example.travel_buddy_app.repositories.HostRepository;
 import jakarta.persistence.EntityNotFoundException;
@@ -38,6 +39,10 @@ public class HostService {
 
     public List<Host> findAllHosts(){
         return hostRepo.findAll();
+    }
+
+    public List<Host> searchHosts(String searchText) {
+        return hostRepo.findHostsBySearchText(searchText);
     }
 
 
