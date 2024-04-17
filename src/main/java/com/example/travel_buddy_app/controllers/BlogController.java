@@ -34,33 +34,33 @@ public class BlogController {
         return blogService.getBlogById(id);
     }
 
-//    @PostMapping("/add-blog")
-//    public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
-////        try {
-//            if (blog.getTitle() == null || blog.getTitle().isEmpty() ||
-//                    blog.getCountry() == null || blog.getCountry().isEmpty() ||
-//                    blog.getCity() == null || blog.getCity().isEmpty() ||
-//                    blog.getSeasonVisited() == null){
-//                return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
-//            }
-//
-//            Season seasonVisited = blog.getSeasonVisited();
-//            if (!isValidSeason(seasonVisited)) {
-//                return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
-//            }
-//
-//            blogService.addNewBlog(blog);
-//            return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
-////        }  catch (IllegalArgumentException ex) {
-////            return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
-////            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
-////        }
-//    }
+    @PostMapping("/add-blog")
+    public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
+        try {
+            if (blog.getTitle() == null || blog.getTitle().isEmpty() ||
+                    blog.getCountry() == null || blog.getCountry().isEmpty() ||
+                    blog.getCity() == null || blog.getCity().isEmpty() ||
+                    blog.getSeasonVisited() == null){
+                return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
+            }
 
-//    private boolean isValidSeason(Season season) {
-//        return season == Season.WINTER || season == Season.SUMMER ||
-//                season == Season.SPRING || season == Season.AUTUMN;
-//    }
+            Season seasonVisited = blog.getSeasonVisited();
+            if (!isValidSeason(seasonVisited)) {
+                return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
+            }
+
+            blogService.addNewBlog(blog);
+            return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
+        }  catch (IllegalArgumentException ex) {
+            return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
+//            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
+        }
+    }
+
+    private boolean isValidSeason(Season season) {
+        return season == Season.WINTER || season == Season.SUMMER ||
+                season == Season.SPRING || season == Season.AUTUMN;
+    }
 
 
     @DeleteMapping("/{id}")
