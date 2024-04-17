@@ -50,7 +50,7 @@ public class BlogController {
             }
 
             Season seasonVisited = blog.getSeasonVisited();
-            if (seasonVisited != null && !isValidSeason(seasonVisited)) {
+            if (!isValidSeason(seasonVisited)) {
                 return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
             }
 
