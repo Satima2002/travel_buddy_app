@@ -67,14 +67,29 @@ public class BlogController {
         blogService.deleteBlogById(id);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Blog> updateDescription(@PathVariable Long id, @RequestBody Blog newDescription) {
-//        if (newTitle == null || newTitle.isEmpty()) {
-//            return ResponseEntity.badRequest().build();
-//        }
 
+    @PutMapping("/{id}/title")
+    public ResponseEntity<Blog> updateTitle(@PathVariable Long id, @RequestBody Blog newTitle) {
+        blogService.updateTitle(id, newTitle);
+        return ResponseEntity.ok(newTitle);
+    }
+
+    @PutMapping("/{id}/description")
+    public ResponseEntity<Blog> updateDescription(@PathVariable Long id, @RequestBody Blog newDescription) {
         blogService.updateDescription(id, newDescription);
         return ResponseEntity.ok(newDescription);
+    }
+
+    @PutMapping("/{id}/country")
+    public ResponseEntity<Blog> updateCountry(@PathVariable Long id, @RequestBody Blog newCountry) {
+        blogService.updateCountry(id, newCountry);
+        return ResponseEntity.ok(newCountry);
+    }
+
+    @PutMapping("/{id}/city")
+    public ResponseEntity<Blog> updateCity(@PathVariable Long id, @RequestBody Blog newCity) {
+        blogService.updateCity(id, newCity);
+        return ResponseEntity.ok(newCity);
     }
 
 

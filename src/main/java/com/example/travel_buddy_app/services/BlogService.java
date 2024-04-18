@@ -53,10 +53,32 @@ public class BlogService {
     }
 
 
+    public void updateTitle(Long id, Blog newTitle) {
+        Blog blog = blogRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
+        blog.setTitle(newTitle.getTitle());
+        blogRepository.save(blog);
+    }
+
     public void updateDescription(Long id, Blog newDescription) {
         Blog blog = blogRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-        blog.setDescription(newDescription.getDescription());
+//        blog.setDescription(newDescription);
+        blog.setDescription(newDescription.getTitle());
+        blogRepository.save(blog);
+    }
+
+    public void updateCountry(Long id, Blog newCountry) {
+        Blog blog = blogRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
+        blog.setCountry(newCountry.getCountry());
+        blogRepository.save(blog);
+    }
+
+    public void updateCity(Long id, Blog newCity) {
+        Blog blog = blogRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
+        blog.setCity(newCity.getCity());
         blogRepository.save(blog);
     }
 
