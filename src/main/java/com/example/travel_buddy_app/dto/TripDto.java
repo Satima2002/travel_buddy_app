@@ -27,6 +27,22 @@ public class TripDto {
     private String transportName;
     private String description;
 
+    @Override
+    public String toString() {
+        return "TripDto{" +
+                "id=" + id +
+                ", user_id=" + user_id +
+                ", destinationCountry='" + destinationCountry + '\'' +
+                ", destinationCity='" + destinationCity + '\'' +
+                ", startDate=" + startDate +
+                ", endDate=" + endDate +
+                ", budget=" + budget +
+                ", typeName='" + typeName + '\'' +
+                ", transportName='" + transportName + '\'' +
+                ", description='" + description + '\'' +
+                '}';
+    }
+
     public Long getId() {
         return id;
     }

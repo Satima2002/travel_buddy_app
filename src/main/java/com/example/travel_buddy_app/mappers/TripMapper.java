@@ -8,7 +8,6 @@ import org.mapstruct.ReportingPolicy;
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
 public interface TripMapper {
     @Mapping(target = "id", source = "id")
-    @Mapping(target = "user_id", source = "user_id")
     @Mapping(target = "destinationCountry", source = "destinationCountry")
     @Mapping(target = "destinationCity", source = "destinationCity")
     @Mapping(target = "startDate", source = "startDate")
@@ -17,6 +16,7 @@ public interface TripMapper {
     @Mapping(target = "typeName", source = "typeName")
     @Mapping(target = "transportName", source = "transportName")
     @Mapping(target = "description", source = "description")
+    @Mapping(target = "user_id", source = "user_id")
 
     TripDto toDto(Trip trip);
 }
