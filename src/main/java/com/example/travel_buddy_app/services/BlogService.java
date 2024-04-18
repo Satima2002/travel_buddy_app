@@ -2,6 +2,7 @@ package com.example.travel_buddy_app.services;
 
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.entities.Blog;
+import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.mappers.BlogMapper;
 import com.example.travel_buddy_app.repositories.BlogRepository;
 import io.micrometer.common.util.StringUtils;
@@ -63,6 +64,24 @@ public class BlogService {
                 .map(blogMapper::toDto)
                 .toList();
 
+    }
+
+    public List<Blog> searchBlog(String searchText) {
+        return blogRepository.findBlogsBySearchText(searchText);
+    }
+    public Blog updateBlog(Long id, Blog blog) {
+        Optional<Blog> existingBlogOptional = blogRepository.findById(id);
+        if (existingBlogOptional.isPresent()) {
+            Blog existingBlog = existingBlogOptional.get();
+            existingBlog.setTitle(blog.getTitle());
+            existingBlog.setDescription(blog.getDescription());
+            existingBlog.setCity(blog.getCity());
+            existingBlog.setCountry(blog.getCountry());
+            existingBlog.setSeasonVisited(blog.getSeasonVisited());
+            return blogRepository.save(existingBlog);
+        } else {
+            return null;
+        }
     }
 
 }
