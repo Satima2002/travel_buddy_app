@@ -1,4 +1,5 @@
 package com.example.travel_buddy_app.controllers;
+import com.example.travel_buddy_app.dto.TripDto;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -57,6 +58,14 @@ public class TripController {
     @GetMapping("/{id}")
     public Trip getTripById(@PathVariable Long id) {
         return tripService.findTrip(id);
+    }
+
+    @GetMapping("/filter")
+    public List<TripDto> findAll(@RequestParam(required = false) List<String> countries,
+                                 @RequestParam(required = false) List<String> cities,
+                                 @RequestParam(required = false) List<String> transports,
+                                 @RequestParam(required = false) List<String> types) {
+        return tripService.findAll(countries, cities, transports, types);
     }
 
 }
