@@ -1,6 +1,7 @@
 package com.example.travel_buddy_app.controllers;
 import com.example.travel_buddy_app.dto.HostDto;
 import com.example.travel_buddy_app.entities.Host;
+import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.HostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,6 +29,11 @@ public class HostController {
     @PostMapping("/add-host")
     public Host addHost(@RequestBody Host host) {
         return hostService.saveHost(host);
+    }
+
+    @PutMapping("/{id}")
+    public Host updateHost(@PathVariable Long id, @RequestBody Host host) {
+        return hostService.updateHost(id, host);
     }
 
     @GetMapping("{id}")

@@ -15,6 +15,7 @@ import java.util.List;
 @RequestMapping(path = "trips")
 public class TripController {
 
+
     @Autowired
     private TripService tripService;
 
@@ -44,7 +45,7 @@ public class TripController {
     }
 
     @PutMapping("/{id}")
-    public Trip updateArticle(@PathVariable Long id, @RequestBody Trip trip) {
+    public Trip updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
         return tripService.updateTrip(id, trip);
     }
 
@@ -57,11 +58,5 @@ public class TripController {
     public Trip getTripById(@PathVariable Long id) {
         return tripService.findTrip(id);
     }
-
-    ////@PutMapping("/{id}")
-   // public ResponseEntity<Void> updateDescription(@PathVariable Long id, @RequestBody String newDescription) {
-   //     tripService.updateDescrption(id, newDescription);
-      //  return ResponseEntity.ok().build();
-   // }
 
 }

@@ -1,6 +1,7 @@
 package com.example.travel_buddy_app.services;
 
 import com.example.travel_buddy_app.dto.HostDto;
+import com.example.travel_buddy_app.entities.Blog;
 import com.example.travel_buddy_app.entities.Host;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.mappers.HostMapper;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
 
 import java.util.List;
+import java.util.Optional;
 
 import static com.example.travel_buddy_app.specifications.HostSpecification.inHostCity;
 import static com.example.travel_buddy_app.specifications.HostSpecification.inHostCountry;
@@ -58,6 +60,21 @@ public class HostService {
                 .map(hostMapper::toDto)
                 .toList();
 
+    }
+
+    public Host updateHost(Long id, Host host) {
+        Optional<Host> existingHostOptional = hostRepo.findById(id);
+        if (existingHostOptional.isPresent()) {
+            Host existingHost = existingHostOptional.get();
+            existingHost.setCountry(host.getCountry());
+            existingHost.setCity(host.getCity());
+            existingHost.setHouseType(host.getHouseType());
+            existingHost.setAvailableEndDate(host.getAvailableEndDate());
+            existingHost.setAvailableStartDate(host.getAvailableStartDate());
+            return hostRepo.save(existingHost);
+        } else {
+            return null;
+        }
     }
 
 }
