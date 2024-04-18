@@ -2,8 +2,8 @@ package com.example.travel_buddy_app.controllers;
 
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.entities.Blog;
-import com.example.travel_buddy_app.enums.Season;
-import com.example.travel_buddy_app.errors.CustomErrorResponse;
+//import com.example.travel_buddy_app.enums.Season;
+//import com.example.travel_buddy_app.errors.CustomErrorResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -44,23 +44,22 @@ public class BlogController {
                 return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
             }
 
-            Season seasonVisited = blog.getSeasonVisited();
-            if (!isValidSeason(seasonVisited)) {
-                return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
-            }
+//            Season seasonVisited = blog.getSeasonVisited();
+//            if (!isValidSeason(seasonVisited)) {
+//                return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
+//            }
 
             blogService.addNewBlog(blog);
             return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
         }  catch (IllegalArgumentException ex) {
             return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
-//            return ResponseEntity.badRequest().body(new CustomErrorResponse("Invalid seasonVisited value. Allowed values: winter, summer, spring, autumn."));
         }
     }
 
-    private boolean isValidSeason(Season season) {
-        return season == Season.WINTER || season == Season.SUMMER ||
-                season == Season.SPRING || season == Season.AUTUMN;
-    }
+//    private boolean isValidSeason(Season season) {
+//        return season == Season.WINTER || season == Season.SUMMER ||
+//                season == Season.SPRING || season == Season.AUTUMN;
+//    }
 
 
     @DeleteMapping("/{id}")
@@ -69,44 +68,15 @@ public class BlogController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateTitle(@PathVariable Long id, @RequestBody String newTitle) {
-//        if (newTitle == null || newTitle.isEmpty()) {
-//            return ResponseEntity.badRequest().build();
-//        }
-
-        blogService.updateTitle(id, newTitle);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateDescription(@PathVariable Long id, @RequestBody String newDescription) {
+    public ResponseEntity<Blog> updateDescription(@PathVariable Long id, @RequestBody Blog newDescription) {
 //        if (newTitle == null || newTitle.isEmpty()) {
 //            return ResponseEntity.badRequest().build();
 //        }
 
         blogService.updateDescription(id, newDescription);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.ok(newDescription);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateCountry(@PathVariable Long id, @RequestBody String newCountry) {
-//        if (newTitle == null || newTitle.isEmpty()) {
-//            return ResponseEntity.badRequest().build();
-//        }
-
-        blogService.updateCountry(id, newCountry);
-        return ResponseEntity.ok().build();
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateCity(@PathVariable Long id, @RequestBody String newCity) {
-//        if (newTitle == null || newTitle.isEmpty()) {
-//            return ResponseEntity.badRequest().build();
-//        }
-
-        blogService.updateCity(id, newCity);
-        return ResponseEntity.ok().build();
-    }
 
 //    /filter?seasonVisited=winter: Retrieves blogs visited in the winter season.
 //    /filter?countries=USA&cities=New+York: Retrieves blogs from the USA, specifically from New York City.

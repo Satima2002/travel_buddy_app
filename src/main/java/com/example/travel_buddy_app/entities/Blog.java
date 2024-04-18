@@ -1,6 +1,6 @@
 package com.example.travel_buddy_app.entities;
 
-import com.example.travel_buddy_app.enums.Season;
+//import com.example.travel_buddy_app.enums.Season;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -20,9 +20,9 @@ public class Blog {
     private String country;
     @Column(name = "city")
     private String city;
-    @Enumerated(EnumType.STRING)
+//    @Enumerated(EnumType.STRING)
     @Column(name = "season_visited")
-    private Season seasonVisited;
+    private String seasonVisited;
     @Column(name = "description")
     private String description;
     @Column(name = "user_id")
@@ -31,7 +31,7 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(Long id,Long userID, String title, String country, String city, Season seasonVisited, String description) {
+    public Blog(Long id,Long userID, String title, String country, String city, String seasonVisited, String description) {
         this.id = id;
         this.userID=userID;
         this.title = title;
