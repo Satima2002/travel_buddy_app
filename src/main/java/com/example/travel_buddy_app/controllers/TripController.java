@@ -4,6 +4,10 @@ import com.example.travel_buddy_app.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -20,9 +24,15 @@ public class TripController {
     }
 
     @PostMapping("/add-trip")
-    public void addNewTrip(@RequestBody Trip trip) {
+   // public void addNewTrip(@RequestBody Trip trip) {
+       // tripService.addNewTrip(trip);
+   // }
+    public ResponseEntity<String> addNewTrip(@Validated @RequestBody Trip trip) {
+        // Save the trip to the database or perform other actions
         tripService.addNewTrip(trip);
+        return ResponseEntity.ok("Trip created successfully");
     }
+
     @GetMapping("/search-trip")
     public ResponseEntity<List<Trip>> searchTrips(@RequestParam String searchText) {
         List<Trip> foundTrips = tripService.searchTrips(searchText);
@@ -32,6 +42,12 @@ public class TripController {
             return ResponseEntity.noContent().build();
         }
     }
+
+    @PutMapping("/{id}")
+    public Trip updateArticle(@PathVariable Long id, @RequestBody Trip trip) {
+        return tripService.updateTrip(id, trip);
+    }
+
     @DeleteMapping("/{id}")
     public void deleteBlogById(@PathVariable("id") Long id) {
         tripService.deleteTripById(id);
@@ -42,5 +58,10 @@ public class TripController {
         return tripService.findTrip(id);
     }
 
+    ////@PutMapping("/{id}")
+   // public ResponseEntity<Void> updateDescription(@PathVariable Long id, @RequestBody String newDescription) {
+   //     tripService.updateDescrption(id, newDescription);
+      //  return ResponseEntity.ok().build();
+   // }
 
 }

@@ -1,5 +1,6 @@
 package com.example.travel_buddy_app.services;
 
+import com.example.travel_buddy_app.dto.TripDto;
 import com.example.travel_buddy_app.entities.Blog;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.mappers.TripMapper;
@@ -49,5 +50,23 @@ public class TripService {
     public List<Trip> searchTrips(String searchText) {
         return tripRepo.findTripsBySearchText(searchText);
     }
-
+    //public void updateDescrption(Long id, String newDesc) {
+       /// Trip trip = tripRepo.findById(id)
+            //    .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
+       // trip.setDescription(newDesc);
+       // tripRepo.save(trip);
+   // }
+    public Trip updateTrip(Long id, Trip trip) {
+        Optional<Trip> existingTripOptional = tripRepo.findById(id);
+        if (existingTripOptional.isPresent()) {
+            Trip existingTrip = existingTripOptional.get();
+            existingTrip.setDescription(trip.getDescription());
+            existingTrip.setBudget(trip.getBudget());
+            existingTrip.setDestinationCity(trip.getDestinationCity());
+            existingTrip.setDestinationCountry(trip.getDestinationCountry());
+            return tripRepo.save(existingTrip);
+        } else {
+            return null;
+        }
+    }
 }
