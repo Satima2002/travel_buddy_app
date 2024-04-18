@@ -1,0 +1,35 @@
+<form (ngSubmit)="register()" class="register-form">
+    
+    <div class="form-group">
+      <label for="userName">Username</label>
+      <input type="userName" id="userName" formControlName="userName" placeholder="Enter your userName" class="form-control" required>
+    </div> 
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="firstName" id="firstName" formControlName="firstName" placeholder="Enter your first name" class="form-control" required>
+    </div>
+    <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input type="lastName" id="lastName" formControlName="lastName" placeholder="Enter your last name" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="dob" id="dob" formControlName="dob" placeholder="Enter your date of birth" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="email">e-mail</label>
+        <input type="email" id="email" formControlName="email" placeholder="Enter your email" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="Create password" class="form-control" required>
+      </div>
+      <div class="form-group">
+        <!-- <label for="description">Description</label>
+        <input type="description" id="description" formControlName="description" placeholder="Enter a small description" class="form-control"> -->
+        <label for="description">Description (max 500 characters)</label>
+    <textarea id="description" formControlName="description" placeholder="Enter a small description" class="form-control" maxlength="500"></textarea>
+    <small>{{ characterCount }} / 500 characters</small>
+      </div>
+    <button type="register" class="btn btn-primary">Sign Up</button>        
+</form>

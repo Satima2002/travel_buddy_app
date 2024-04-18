@@ -1,0 +1,18 @@
+.welcome-page-container {
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(238, 235, 235, 0.1);
+}
+
+.welcome-page-container h1 {
+    color: #333;
+    font-size: 36px;
+    margin-bottom: 10px;
+}
+
+.welcome-page-container h2 {
+    color: #ebe5e5;
+    font-size: 24px;
+}
