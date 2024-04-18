@@ -17,7 +17,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class SecurityConfig {
     @Autowired
-
     private UserService userService;
 
     public SecurityConfig(UserService userService) {
@@ -53,12 +52,12 @@ public class SecurityConfig {
 
 //                );
         //http
-          //      .csrf(csrf -> csrf.disable())
-            //    .authorizeHttpRequests((authorize) ->
-              //          authorize.requestMatchers("/api/**").permitAll()
-                //                .requestMatchers("/api/auth/**").permitAll()
-                  //              .anyRequest().authenticated()
-                //);
+        //      .csrf(csrf -> csrf.disable())
+        //    .authorizeHttpRequests((authorize) ->
+        //          authorize.requestMatchers("/api/**").permitAll()
+        //                .requestMatchers("/api/auth/**").permitAll()
+        //              .anyRequest().authenticated()
+        //);
 //        http
 //                .csrf(csrf -> csrf.disable())
 //                .authorizeRequests((authorize) ->
