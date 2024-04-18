@@ -29,4 +29,6 @@ public interface TripRepository extends JpaRepository<Trip,Long>, JpaSpecificati
     // for filtering
     @NonNull
     Page<Trip> findAll(@NonNull Specification<Trip> spec, @NonNull Pageable pageable);
+
+
 }
