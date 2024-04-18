@@ -41,9 +41,6 @@ public class Trip {
     @Column(name = "description")
     private String description;
 
-    public Trip() {
-
-    }
 
     public Trip(Long ID, Long userid, String destinationCountry, String destinationCity, Date startDate, Date endDate, BigInteger budget, String typeName, String transportName, String description) {
         this.id = ID;
@@ -57,4 +54,9 @@ public class Trip {
         this.transportName = transportName;
         this.description = description;
     }
+    
+    public Trip() {
+
+    }
+
 }
