@@ -17,6 +17,5 @@ public interface TripMapper {
     @Mapping(target = "typeName", source = "typeName")
     @Mapping(target = "transportName", source = "transportName")
     @Mapping(target = "description", source = "description")
-
     TripDto toDto(Trip trip);
 }

@@ -1,16 +1,19 @@
 package com.example.travel_buddy_app.services;
 
 import com.example.travel_buddy_app.dto.TripDto;
-import com.example.travel_buddy_app.entities.Blog;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.mappers.TripMapper;
 import com.example.travel_buddy_app.repositories.TripRepository;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.example.travel_buddy_app.specifications.TripSpecifications.*;
 
 @Service
 public class TripService {
@@ -71,5 +74,19 @@ public class TripService {
         } else {
             return null;
         }
+    }
+
+    public List<TripDto> findAll(List<String>countries, List<String> cities, List<String> transports, List<String> types) {
+        Specification<Trip> filters = Specification.where(CollectionUtils.isEmpty(countries) ? null : inTripCountry(countries))
+                .and(CollectionUtils.isEmpty(cities) ? null : inTripCity(cities))
+                .and(CollectionUtils.isEmpty(transports) ? null : inTripTransport(transports))
+                .and(CollectionUtils.isEmpty(types) ? null : inTripType(types));
+
+        // query execution and retrieving the list of entities on specified filters from the repository
+        return tripRepo.findAll(filters)
+                .stream()
+                .map(tripMapper::toDto)
+                .toList();
+
     }
 }
