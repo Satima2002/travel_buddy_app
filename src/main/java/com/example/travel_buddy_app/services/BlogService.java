@@ -2,7 +2,7 @@ package com.example.travel_buddy_app.services;
 
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.entities.Blog;
-import com.example.travel_buddy_app.enums.Season;
+//import com.example.travel_buddy_app.enums.Season;
 import com.example.travel_buddy_app.mappers.BlogMapper;
 import com.example.travel_buddy_app.repositories.BlogRepository;
 import io.micrometer.common.util.StringUtils;
@@ -52,17 +52,18 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
-    public void updateTitle(Long id, String newTitle) {
+    public void updateTitle(Long id, Blog newTitle) {
         Blog blog = blogRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-        blog.setTitle(newTitle);
+        blog.setTitle(newTitle.getTitle());
         blogRepository.save(blog);
     }
 
-    public void updateDescription(Long id, String newDescription) {
+    public void updateDescription(Long id, Blog newDescription) {
         Blog blog = blogRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-        blog.setDescription(newDescription);
+//        blog.setDescription(newDescription);
+        blog.setDescription(newDescription.getTitle());
         blogRepository.save(blog);
     }
 
@@ -94,7 +95,4 @@ public class BlogService {
                 .toList();
 
     }
-
-
-
 }

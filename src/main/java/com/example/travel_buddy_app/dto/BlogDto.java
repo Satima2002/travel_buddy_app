@@ -1,5 +1,6 @@
 package com.example.travel_buddy_app.dto;
 
+//import com.example.travel_buddy_app.enums.Season;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -7,14 +8,15 @@ import lombok.Setter;
 
 @Getter
 @Setter
-@NoArgsConstructor
-@AllArgsConstructor
+//@NoArgsConstructor
+//@AllArgsConstructor
 public class BlogDto {
     private Long id;
     private String title;
     private String country;
     private String city;
     private String seasonVisited;
+//    private Season seasonVisited;
     private String description;
     private Long userID;
 
@@ -28,6 +30,19 @@ public class BlogDto {
                 ", seasonVisited='" + seasonVisited + '\'' +
                 ", description='" + description + '\'' +
                 '}';
+    }
+
+    public BlogDto(Long id, String title, String country, String city, String seasonVisited, String description, Long userID) {
+        this.id = id;
+        this.title = title;
+        this.country = country;
+        this.city = city;
+        this.seasonVisited = seasonVisited;
+        this.description = description;
+        this.userID = userID;
+    }
+
+    public BlogDto() {
     }
 
     public Long getId() {
@@ -66,9 +81,16 @@ public class BlogDto {
         return seasonVisited;
     }
 
+//    public Season getSeasonVisited() {
+//        return seasonVisited;
+//    }
+
     public void setSeasonVisited(String seasonVisited) {
         this.seasonVisited = seasonVisited;
     }
+//    public void setSeasonVisited(Season seasonVisited) {
+//        this.seasonVisited = seasonVisited;
+//    }
 
     public String getDescription() {
         return description;

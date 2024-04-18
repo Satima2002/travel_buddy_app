@@ -27,6 +27,7 @@ public class TripDto {
     private String transportName;
     private String description;
 
+
     public Long getId() {
         return id;
     }

@@ -8,6 +8,7 @@ import org.mapstruct.ReportingPolicy;
 
 
 @Mapper(componentModel = "spring", unmappedTargetPolicy = ReportingPolicy.ERROR)
+//@Mapper(componentModel = "spring")
 public interface BlogMapper {
     @Mapping(target = "id", source = "id")
     @Mapping(target = "userID", source = "userID")
