@@ -36,11 +36,19 @@ public class BlogService {
         return blogRepository.getBlogEntityById(id).orElseThrow(EntityNotFoundException::new);
     }
 
-    public void addNewBlog(Blog blog) {
+    public void validatePostBlog(Blog blog) {
+        if (blog.getTitle() == null || blog.getTitle().isEmpty() ||
+                blog.getCountry() == null || blog.getCountry().isEmpty() ||
+                blog.getCity() == null || blog.getCity().isEmpty() ||
+                blog.getSeasonVisited() == null) {
+            throw new IllegalArgumentException("Title, country, city, and season are required fields.");
+        }
         Optional<Blog> newBlogOptional = blogRepository.getBlogEntityById(blog.getId());
         if (newBlogOptional.isPresent()) {
             throw new IllegalStateException("This blog id " + blog.getId() + " exists");
         }
+    }
+    public void addNewBlog(Blog blog) {
         blogRepository.save(blog);
     }
 
@@ -52,33 +60,23 @@ public class BlogService {
         blogRepository.deleteById(id);
     }
 
-
     public void updateTitle(Long id, Blog newTitle) {
-        Blog blog = blogRepository.findById(id)
+        if (newTitle == null || newTitle.getTitle().isEmpty()) {
+            throw new IllegalArgumentException("Title cannot be empty.");
+        }
+        Blog existingBlog = blogRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-        blog.setTitle(newTitle.getTitle());
-        blogRepository.save(blog);
+        existingBlog.setTitle(newTitle.getTitle());
+        blogRepository.save(existingBlog);
     }
 
     public void updateDescription(Long id, Blog newDescription) {
+        if (newDescription == null || newDescription.getTitle().isEmpty()) {
+            throw new IllegalArgumentException("Description cannot be empty.");
+        }
         Blog blog = blogRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-//        blog.setDescription(newDescription);
         blog.setDescription(newDescription.getTitle());
-        blogRepository.save(blog);
-    }
-
-    public void updateCountry(Long id, Blog newCountry) {
-        Blog blog = blogRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-        blog.setCountry(newCountry.getCountry());
-        blogRepository.save(blog);
-    }
-
-    public void updateCity(Long id, Blog newCity) {
-        Blog blog = blogRepository.findById(id)
-                .orElseThrow(() -> new EntityNotFoundException("Blog with id " + id + " not found"));
-        blog.setCity(newCity.getCity());
         blogRepository.save(blog);
     }
 

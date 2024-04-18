@@ -2,16 +2,12 @@ package com.example.travel_buddy_app.controllers;
 
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.entities.Blog;
-//import com.example.travel_buddy_app.enums.Season;
-//import com.example.travel_buddy_app.errors.CustomErrorResponse;
+import com.example.travel_buddy_app.services.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import com.example.travel_buddy_app.services.BlogService;
+
 import java.util.List;
 
 @RestController
@@ -37,18 +33,7 @@ public class BlogController {
     @PostMapping("/add-blog")
     public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
         try {
-            if (blog.getTitle() == null || blog.getTitle().isEmpty() ||
-                    blog.getCountry() == null || blog.getCountry().isEmpty() ||
-                    blog.getCity() == null || blog.getCity().isEmpty() ||
-                    blog.getSeasonVisited() == null){
-                return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
-            }
-
-//            Season seasonVisited = blog.getSeasonVisited();
-//            if (!isValidSeason(seasonVisited)) {
-//                return new ResponseEntity<>("Invalid season value. Valid options are: winter, summer, spring, autumn.", HttpStatus.BAD_REQUEST);
-//            }
-
+            blogService.validatePostBlog(blog);
             blogService.addNewBlog(blog);
             return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
         }  catch (IllegalArgumentException ex) {
@@ -56,40 +41,30 @@ public class BlogController {
         }
     }
 
-//    private boolean isValidSeason(Season season) {
-//        return season == Season.WINTER || season == Season.SUMMER ||
-//                season == Season.SPRING || season == Season.AUTUMN;
-//    }
-
-
     @DeleteMapping("/{id}")
     public void deleteBlogById(@PathVariable("id") Long id) {
         blogService.deleteBlogById(id);
     }
 
-
     @PutMapping("/{id}/title")
     public ResponseEntity<Blog> updateTitle(@PathVariable Long id, @RequestBody Blog newTitle) {
-        blogService.updateTitle(id, newTitle);
+        try {
+            blogService.updateTitle(id, newTitle);
         return ResponseEntity.ok(newTitle);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().build();
+        }
+//        return ResponseEntity.ok(newTitle);
     }
 
     @PutMapping("/{id}/description")
     public ResponseEntity<Blog> updateDescription(@PathVariable Long id, @RequestBody Blog newDescription) {
-        blogService.updateDescription(id, newDescription);
-        return ResponseEntity.ok(newDescription);
-    }
-
-    @PutMapping("/{id}/country")
-    public ResponseEntity<Blog> updateCountry(@PathVariable Long id, @RequestBody Blog newCountry) {
-        blogService.updateCountry(id, newCountry);
-        return ResponseEntity.ok(newCountry);
-    }
-
-    @PutMapping("/{id}/city")
-    public ResponseEntity<Blog> updateCity(@PathVariable Long id, @RequestBody Blog newCity) {
-        blogService.updateCity(id, newCity);
-        return ResponseEntity.ok(newCity);
+        try {
+            blogService.updateTitle(id, newDescription);
+            return ResponseEntity.ok(newDescription);
+        } catch (IllegalArgumentException ex) {
+            return ResponseEntity.badRequest().build();
+        }
     }
 
 
