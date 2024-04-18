@@ -12,6 +12,7 @@ profile_photo varchar(255) not null,
 description varchar(500) null
 );
 
+
 --drop table users;
 --drop table trip;
 --drop table blog;
