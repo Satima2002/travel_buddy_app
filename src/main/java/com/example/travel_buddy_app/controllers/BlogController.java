@@ -54,7 +54,6 @@ public class BlogController {
         } catch (IllegalArgumentException ex) {
             return ResponseEntity.badRequest().build();
         }
-//        return ResponseEntity.ok(newTitle);
     }
 
     @PutMapping("/{id}/description")
