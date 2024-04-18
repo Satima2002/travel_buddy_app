@@ -5,8 +5,14 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import javax.validation.constraints.NotBlank;
 import java.math.BigInteger;
 import java.util.Date;
+import javax.validation.constraints.FutureOrPresent;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
+import java.time.LocalDate;
 
 @Entity
 @Table(name="trip")
@@ -18,14 +24,23 @@ public class Trip {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Long user_id;
+    @NotBlank(message = "Destination country cannot be blank")
     private String destinationCountry;
+    @NotBlank(message = "Destination city cannot be blank")
     private String destinationCity;
+
     @JsonFormat (pattern = "dd-MM-yyyy")
+    @NotNull(message = "Start date cannot be null")
+    @PastOrPresent(message = "Start date must be in the past or present")
     private Date startDate;
+
     @JsonFormat (pattern = "dd-MM-yyyy")
+    @NotNull(message = "End date cannot be null")
+    @FutureOrPresent(message = "End date must be in the future or present")
     private Date endDate;
 
     private BigInteger budget;
+    @NotBlank(message = "Name cannot be blank")
     private String typeName;
     private String transportName;
     private String description;
