@@ -64,6 +64,9 @@ public class TripService {
             existingTrip.setBudget(trip.getBudget());
             existingTrip.setDestinationCity(trip.getDestinationCity());
             existingTrip.setDestinationCountry(trip.getDestinationCountry());
+            existingTrip.setEndDate(trip.getEndDate());
+            existingTrip.setStartDate(trip.getStartDate());
+            existingTrip.setTypeName(trip.getTypeName());
             return tripRepo.save(existingTrip);
         } else {
             return null;
