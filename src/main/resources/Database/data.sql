@@ -1,4 +1,4 @@
-INSERT INTO users (first_name, last_name, user_name, dob, gender, email, password, profile_photo, hobbies)
+INSERT INTO users (first_name, last_name, user_name, dob, gender, email, password, profile_photo, description)
 VALUES
 ('John', 'Doe', 'johndoe', '1990-05-15', 'Male', 'john.doe@example.com', 'password123', '{"url": "https://example.com/profile.jpg"}', 'Reading, Swimming'),
 ('Jane', 'Smith', 'janesmith', '1988-09-20', 'Female', 'jane.smith@example.com', 'securepass', '{"url": "https://example.com/avatar.png"}', 'Hiking, Cooking'),
