@@ -4,6 +4,7 @@ import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder, Validators } 
 import { NgModule } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login-page',
@@ -28,15 +29,31 @@ export class LoginPageComponent {
         password: ['', Validators.required]
       });
     }
-    login() {
-      console.log('Form values:', this.loginForm.value);
 
-    if((this.password = '12345') && (this.email='oshidiweerakulasuriya@gmail.com')){
-        this.router.navigate(['/user-home']); 
-    } else {
-      alert('Please enter a valid email and password');
+    login() {
+      if (this.loginForm.invalid) {
+        return;
+      }
+  
+      this.http.post<any>('http://localhost:8080/api/auth/signin', this.loginForm.value)
+      .pipe(
+        tap(response => {
+          // Handle successful login response
+          console.log('Login successful', response);
+          this.router.navigate(['/user-home']);
+        })
+      )
+      .subscribe();
     }
-  }
+  //   login() {
+  //     console.log('Form values:', this.loginForm.value);
+
+  //   if((this.password = '12345') && (this.email='oshidiweerakulasuriya@gmail.com')){
+  //       this.router.navigate(['/user-home']); 
+  //   } else {
+  //     alert('Please enter a valid email and password');
+  //   }
+  // }
   registerUser() {
     this.router.navigate(['/register-user']);
   }

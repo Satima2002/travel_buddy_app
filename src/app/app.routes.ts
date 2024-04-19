@@ -1,8 +1,9 @@
-import { Routes } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { WelcomePageComponent } from './Pages/welcome-page/welcome-page.component';
 import { LoginPageComponent } from './Pages/login-page/login-page.component';
 import { UserHomePageComponent } from './Pages/user-home-page/user-home-page.component';
 import { RegisterUserPageComponent } from './Pages/register-user-page/register-user-page.component';
+import { NgModule } from '@angular/core';
 
 export const routes: Routes = [
     { path: '', component:WelcomePageComponent, title: 'Welcome page'},

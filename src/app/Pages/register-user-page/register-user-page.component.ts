@@ -12,20 +12,19 @@ import { FormControl, FormGroup, ReactiveFormsModule, FormBuilder, Validators } 
 export class RegisterUserPageComponent {
   characterCount: number = 0;
   descriptionControl = new FormControl('');
-  userName: string = '';
-    firstName: string = '';
-    lastName: string = '';
-    dob: string = '';
-   email: string = '';
-  password: string = '';
-    //profilePhoto: string = '';
-    description: string = '';
+    
     registerForm: FormGroup;
 
     constructor(private router: Router, private fb: FormBuilder) {
       this.registerForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+        userName: ['', Validators.required],
+        firstName: ['', Validators.required],
+        lastName: ['', Validators.required],
+        dob: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        password: ['', Validators.required],
+        gender: ['', Validators.required], // Add gender field here
+        description: ['']
       });
     }
 

@@ -7,11 +7,18 @@ import { NgModule } from '@angular/core';
 import { NgModel } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CardComponent } from './card/card.component';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
+import { ToastModule } from 'primeng/toast';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, NavbarComponent, FormsModule, ReactiveFormsModule, HttpClientModule],
+  imports: [RouterOutlet, NavbarComponent, FormsModule, ReactiveFormsModule, HttpClientModule,
+   CardComponent, InputTextModule, ButtonModule, ToastModule, CommonModule
+  ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
