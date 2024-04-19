@@ -11,20 +11,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/blogs/enum")
+@RequestMapping(path = "/blog-season")
 public class BlogEnumController {
 
-    @GetMapping("/seasons")
+    @GetMapping
     public ResponseEntity<List<String>> getSeasons() {
         List<String> seasons = Arrays.stream(BlogSeasonEnum.values()).map(BlogSeasonEnum::getSeason).collect(Collectors.toList());
 
         return ResponseEntity.ok(seasons);
     }
-//        @GetMapping("/countries")
-//    public ResponseEntity<List<String>> getCountries() {
-//        List<String> countries = Arrays.stream(BlogCountryEnum.values()).map(BlogCountryEnum::getCountry).collect(Collectors.toList());
-//
-//        return ResponseEntity.ok(countries);
-//    }
 
 }
