@@ -51,7 +51,7 @@ public class TripController {
     }
 
     @DeleteMapping("/{id}")
-    public void deleteBlogById(@PathVariable("id") Long id) {
+    public void deleteTripById(@PathVariable("id") Long id) {
         tripService.deleteTripById(id);
     }
 

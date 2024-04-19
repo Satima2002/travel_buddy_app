@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,6 +35,14 @@ public class HostService {
     public Host findHost(Long id){
         return hostRepo.findHostEntityByID(id).orElseThrow(EntityNotFoundException::new);
 
+    }
+
+    public void deleteHostById(Long id) {
+        boolean exists = hostRepo.existsById(id);
+        if (!exists) {
+            throw new IllegalStateException("The trip with " + id + " does not exist");
+        }
+        hostRepo.deleteById(id);
     }
 
     public Host saveHost(Host host){
