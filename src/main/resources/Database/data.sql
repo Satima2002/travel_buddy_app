@@ -1,15 +1,21 @@
-INSERT INTO users (first_name, last_name,user_name, dob, email, password, profile_photo, description)
+INSERT INTO users (first_name, last_name, user_name, dob, gender, email, password, profile_photo, description)
 VALUES
-    ('John', 'Doe','userJ', '1990-05-15', 'john.doe@example.com', 'password123', '{"url": "https://example.com/photo1.jpg"}', 'Some description 1'),
-    ('Alice', 'Smith','userA', '1985-09-20', 'alice.smith@example.com', 'p@ssw0rd', '{"url": "https://example.com/photo2.jpg"}', 'Some description 2'),
-    ('Bob', 'Johnson','userB', '1992-03-10', 'bob.johnson@example.com', 'securepassword', '{"url": "https://example.com/photo3.jpg"}', 'Some description 3'),
-    ('Bob', 'Brown', 'userL','1993-04-04', 'bob.brown@example.com', 'passwordabc', '{"url": "https://example.com/photo4.jpg"}', 'Description 4'),
-    ('Eva', 'Williams', 'userE','1994-05-05' , 'eva.williams@example.com', 'passworddef', '{"url": "https://example.com/photo5.jpg"}', 'Description 5'),
-    ('Michael', 'Jones','userM', '1995-06-06', 'michael.jones@example.com', 'passwordghi', '{"url": "https://example.com/photo6.jpg"}', 'Description 6'),
-    ('Sophia', 'Davis', 'userJ', '1996-07-07', 'sophia.davis@example.com', 'passwordjkl', '{"url": "https://example.com/photo7.jpg"}', 'Description 7'),
-    ('Daniel', 'Miller', 'userK','1997-08-08', 'daniel.miller@example.com', 'passwordmno', '{"url": "https://example.com/photo8.jpg"}', 'Description 8'),
-    ('Olivia', 'Wilson', 'userW','1998-09-09', 'olivia.wilson@example.com', 'passwordpqr', '{"url": "https://example.com/photo9.jpg"}', 'Description 9'),
-    ('William', 'Taylor', 'userT','1999-10-10', 'william.taylor@example.com', 'passwordstu', '{"url": "https://example.com/photo10.jpg"}', 'Description 10');
+('John', 'Doe', 'johndoe', '1990-05-15', 'Male', 'john.doe@example.com', 'password123', '{"url": "https://example.com/profile.jpg"}', 'Reading, Swimming'),
+('Jane', 'Smith', 'janesmith', '1988-09-20', 'Female', 'jane.smith@example.com', 'securepass', '{"url": "https://example.com/avatar.png"}', 'Hiking, Cooking'),
+('Michael', 'Johnson', 'michaelj', '1985-07-10', 'Male', 'michael.j@example.com', 'mikepass', '{"url": "https://example.com/pic.jpg"}', 'Photography, Traveling'),
+('Emily', 'Williams', 'emilyw', '1992-03-25', 'Female', 'emily.w@example.com', 'pass123', '{"url": "https://example.com/photo.jpg"}', 'Painting, Yoga'),
+('David', 'Brown', 'davidb', '1987-11-08', 'Male', 'david.b@example.com', 'brownpass', '{"url": "https://example.com/image.jpg"}', 'Gardening, Cycling'),
+('Emma', 'Jones', 'emmaj', '1995-02-12', 'Female', 'emma.j@example.com', 'emma123', '{"url": "https://example.com/picture.jpg"}', 'Dancing, Cooking'),
+('James', 'Wilson', 'jamesw', '1983-06-30', 'Male', 'james.w@example.com', 'password456', '{"url": "https://example.com/profile.png"}', 'Singing, Chess'),
+('Olivia', 'Davis', 'oliviad', '1998-08-18', 'Female', 'olivia.d@example.com', 'olivia321', '{"url": "https://example.com/avatar.jpg"}', 'Reading, Painting'),
+('William', 'Miller', 'williamm', '1993-04-05', 'Male', 'william.m@example.com', 'willpass', '{"url": "https://example.com/photo.png"}', 'Cooking, Running'),
+('Sophia', 'Garcia', 'sophiag', '1986-10-12', 'Female', 'sophia.g@example.com', 'sophiepass', '{"url": "https://example.com/image.png"}', 'Yoga, Traveling'),
+('Alexander', 'Martinez', 'alexm', '1989-12-22', 'Male', 'alex.m@example.com', 'alexpass', '{"url": "https://example.com/pic.png"}', 'Cycling, Fishing'),
+('Isabella', 'Hernandez', 'isabellah', '1991-01-17', 'Female', 'isabella.h@example.com', 'isapass', '{"url": "https://example.com/picture.png"}', 'Photography, Hiking'),
+('Daniel', 'Lopez', 'daniell', '1984-07-28', 'Male', 'daniel.l@example.com', 'danpass', '{"url": "https://example.com/avatar.png"}', 'Swimming, Reading'),
+('Mia', 'Gonzalez', 'miag', '1996-09-08', 'Female', 'mia.g@example.com', 'miapass', '{"url": "https://example.com/profile.jpg"}', 'Cooking, Dancing'),
+('Benjamin', 'Young', 'benjaminy', '1982-11-04', 'Male', 'benjamin.y@example.com', 'benpass', '{"url": "https://example.com/photo.jpg"}', 'Painting, Traveling');
+
 
 select * from users;
 
