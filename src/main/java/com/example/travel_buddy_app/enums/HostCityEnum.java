@@ -1,4 +1,4 @@
 package com.example.travel_buddy_app.enums;
 
-public enum HouseTypeEnum {
+public enum HostCityEnum {
 }

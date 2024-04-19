@@ -19,10 +19,16 @@ public class Trip {
     private Long id;
     @Column(name = "user_id")
     private Long user_id;
+
+//    @Enumerated(EnumType.STRING)
     @Column(name = "destination_country")
     private String destinationCountry;
+//    private TripCountryEnum destinationCountry;
+
+//    @Enumerated(EnumType.STRING)
     @Column(name = "destination_city")
     private String destinationCity;
+//    private TripCityEnum destinationCity;
 
     @JsonFormat (pattern = "dd-MM-yyyy")
     @Column(name = "start_date")
@@ -34,10 +40,16 @@ public class Trip {
 
     @Column(name = "budget")
     private BigInteger budget;
+
+//    @Enumerated(EnumType.STRING)
     @Column(name = "type_name")
     private String typeName;
+//    private TripTypeEnum typeName;
+
+//    @Enumerated(EnumType.STRING)
     @Column(name = "transport_name")
     private String transportName;
+//    private TripTransportEnum transportName;
     @Column(name = "description")
     private String description;
 

@@ -1,6 +1,9 @@
 package com.example.travel_buddy_app.enums;
 
-public enum SeasonEnum {
+import lombok.Getter;
+
+@Getter
+public enum BlogSeasonEnum {
     SPRING("Spring"),
     WINTER("Winter"),
     AUTUMN("Autumn"),
@@ -8,7 +11,7 @@ public enum SeasonEnum {
 
     private final String season;
 
-    SeasonEnum(String displaySeason) {
+    BlogSeasonEnum(String displaySeason) {
         this.season = displaySeason;
     }
 
