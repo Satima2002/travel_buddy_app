@@ -41,7 +41,12 @@ public class HostController {
         return hostService.findHost(id);
     }
 
-//    /filter?countries=USA&cities=New+York
+    @DeleteMapping("/{id}")
+    public void deleteHostById(@PathVariable("id") Long id) {
+        hostService.deleteHostById(id);
+    }
+
+    //    /filter?countries=USA&cities=New+York
 //    /filter?seasonVisited=summer&countries=France
     @GetMapping("/filter")
     public List<HostDto> findAll(@RequestParam(required = false) List<String> countries,
