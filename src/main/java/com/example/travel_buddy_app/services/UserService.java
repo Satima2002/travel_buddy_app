@@ -4,6 +4,7 @@ package com.example.travel_buddy_app.services;
 import com.example.travel_buddy_app.dto.LoginDto;
 import com.example.travel_buddy_app.dto.SignUpDto;
 import com.example.travel_buddy_app.entities.User;
+import com.example.travel_buddy_app.enums.UserGenderEnum;
 import com.example.travel_buddy_app.repositories.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -36,9 +37,6 @@ public class UserService implements UserDetailsService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-
-
-
     @Override
     public UserDetails loadUserByUsername(String usernameOrEmail) throws UsernameNotFoundException {
         User user = userRepo.findByUserNameOrEmail(usernameOrEmail, usernameOrEmail)
@@ -52,8 +50,6 @@ public class UserService implements UserDetailsService {
                 user.getPassword(),
                 authorities);
     }
-
-
 
     public ResponseEntity<?> registerUser(SignUpDto signUpDto) {
         validateSignUpDto(signUpDto);
@@ -136,7 +132,7 @@ public class UserService implements UserDetailsService {
         user.setLastName(signUpDto.getLastName());
         user.setDob(signUpDto.getDob());
         user.setEmail(signUpDto.getEmail());
-        user.setGender(signUpDto.getGender());
+        user.setGender(UserGenderEnum.valueOf(signUpDto.getGender().toUpperCase()));
         user.setPassword(passwordEncoder.encode(signUpDto.getPassword()));
         user.setDescription(signUpDto.getDescription());
         user.setProfilePhoto(signUpDto.getProfilePhoto());

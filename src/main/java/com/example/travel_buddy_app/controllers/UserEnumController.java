@@ -11,10 +11,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/users/enum")
+@RequestMapping("/api/auth/user-gender")
 public class UserEnumController {
 
-    @GetMapping("/gender")
+    @GetMapping
     public ResponseEntity<List<String>> getGender() {
         List<String> genders = Arrays.stream(UserGenderEnum.values()).map(UserGenderEnum::getGender).collect(Collectors.toList());
     return ResponseEntity.ok(genders);

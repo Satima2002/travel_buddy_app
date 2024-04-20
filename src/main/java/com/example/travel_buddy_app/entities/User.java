@@ -2,6 +2,7 @@ package com.example.travel_buddy_app.entities;
 
 
 
+import com.example.travel_buddy_app.enums.UserGenderEnum;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -19,32 +20,25 @@ public class User {
     @Column(name="id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-
     @Column(name="user_name")
     private String userName;
-
     @Column(name="first_name")
     private String firstName;
-
     @Column(name="last_name")
     private String lastName;
-
     @Column(name="dob")
     private Date dob;
-
     @Column(name="email")
     private String email;
 
-     @Column(name="gender")
-     private String gender;
-
-
+    @Enumerated(EnumType.STRING)
+    @Column(name="gender")
+    private UserGenderEnum gender;
+//    private String gender;
     @Column(name="password")
     private String password;
-
     @Column(name="profile_photo")
     private String profilePhoto;
-
     @Column(name="description")
     private String description;
 
@@ -97,11 +91,11 @@ public class User {
         this.email = email;
     }
 
-    public String getGender() {
+    public UserGenderEnum getGender() {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public void setGender(UserGenderEnum gender) {
         this.gender = gender;
     }
 
