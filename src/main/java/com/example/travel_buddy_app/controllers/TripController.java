@@ -2,6 +2,7 @@ package com.example.travel_buddy_app.controllers;
 import com.example.travel_buddy_app.dto.TripDto;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.TripService;
+import com.example.travel_buddy_app.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +17,6 @@ import java.util.List;
 @RequestMapping(path = "trips")
 public class TripController {
 
-
     @Autowired
     private TripService tripService;
 
@@ -26,11 +26,7 @@ public class TripController {
     }
 
     @PostMapping("/add-trip")
-    // public void addNewTrip(@RequestBody Trip trip) {
-    // tripService.addNewTrip(trip);
-    // }
     public ResponseEntity<String> addNewTrip(@Validated @RequestBody Trip trip) {
-        // Save the trip to the database or perform other actions
         tripService.addNewTrip(trip);
         return ResponseEntity.ok("Trip created successfully");
     }
@@ -44,7 +40,6 @@ public class TripController {
             return ResponseEntity.noContent().build();
         }
     }
-
     @PutMapping("/{id}")
     public Trip updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
         return tripService.updateTrip(id, trip);

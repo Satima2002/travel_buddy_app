@@ -20,17 +20,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    @Column(name="user_name")
-    private String userName;
-
     @Column(name="first_name")
     private String firstName;
 
     @Column(name="last_name")
     private String lastName;
-
-    @Column(name="dob")
-    private Date dob;
 
     @Column(name="email")
     private String email;
@@ -38,15 +32,21 @@ public class User {
      @Column(name="gender")
      private String gender;
 
-
     @Column(name="password")
     private String password;
 
-    @Column(name="profile_photo")
-    private String profilePhoto;
-
     @Column(name="description")
     private String description;
+
+    public User(String firstName, String lastName, String email, String gender, String password, String description) {
+        super();
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.gender = gender;
+        this.password = password;
+        this.description = description;
+    }
 
 
     public Long getId() {
@@ -55,14 +55,6 @@ public class User {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getFirstName() {
@@ -79,14 +71,6 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public Date getDob() {
-        return dob;
-    }
-
-    public void setDob(Date dob) {
-        this.dob = dob;
     }
 
     public String getEmail() {
@@ -111,14 +95,6 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getProfilePhoto() {
-        return profilePhoto;
-    }
-
-    public void setProfilePhoto(String profilePhoto) {
-        this.profilePhoto = profilePhoto;
     }
 
     public String getDescription() {
