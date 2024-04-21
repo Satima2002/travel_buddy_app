@@ -43,7 +43,7 @@ public class SecurityConfig{
                         .loginPage("/signin") // Custom login page
                         .permitAll() // Allow access to login page
                         .successForwardUrl("/home")
-                        .defaultSuccessUrl("/",true).permitAll()
+                        .defaultSuccessUrl("/home",true).permitAll()
                 )
                 .logout(logout -> logout
                         .logoutSuccessUrl("/index") // Redirect to home page after logout

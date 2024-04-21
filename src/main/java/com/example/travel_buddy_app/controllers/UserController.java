@@ -21,13 +21,13 @@ public class UserController {
 
     @Autowired
     UserDetailsService userDetailsService;
+    @Autowired
+    public UserService userService;
 
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @Autowired
-    public UserService userService;
 
     @GetMapping("/")
     public String index(){
@@ -35,19 +35,19 @@ public class UserController {
         return "index";
     }
 
-    @GetMapping("/signin")
-    public String signin(Model model, UserDto userDto){
-
-        model.addAttribute("user", userDto);
-        return "signin";
-    }
     @GetMapping("/home")
     public String home(Model model, Principal principal){
-
         UserDetails userDetails=userDetailsService.loadUserByUsername(principal.getName());
         model.addAttribute("userDetail",userDetails);
         return "home";
     }
+
+    @GetMapping("/signin")
+    public String signin(Model model, UserDto userDto){
+        model.addAttribute("user", userDto);
+        return "signin";
+    }
+
 
     @GetMapping("/signup")
     public String showForm(Model model) {
@@ -57,9 +57,14 @@ public class UserController {
     }
 
     @PostMapping("/signup")
-    public String signupSave(@ModelAttribute("user") UserDto userDto){
+    public String signupSave(@ModelAttribute("user") UserDto userDto, Model model){
+       // User user=userService.findByUsername(userDto.getEmail());
+      //  if (user== null){
+         //   model.addAttribute("userexist",user);
+          //  return "signin";
+      //  }
         userService.save(userDto);
-        return "redirect:/register?success";
+        return "redirect:/signup?success";
     }
 
 }
