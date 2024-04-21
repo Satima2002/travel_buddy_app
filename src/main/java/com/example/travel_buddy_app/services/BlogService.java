@@ -104,6 +104,7 @@ public class BlogService {
             existingBlog.setTitle(blog.getTitle());
             existingBlog.setDescription(blog.getDescription());
             existingBlog.setCity(blog.getCity());
+            existingBlog.setSecurityLevelRating(blog.getSecurityLevelRating());
             existingBlog.setCountry(blog.getCountry());
             existingBlog.setSeasonVisited(blog.getSeasonVisited());
             return blogRepository.save(existingBlog);
