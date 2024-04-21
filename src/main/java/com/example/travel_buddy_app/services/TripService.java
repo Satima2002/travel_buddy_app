@@ -67,6 +67,7 @@ public class TripService {
             existingTrip.setEndDate(trip.getEndDate());
             existingTrip.setStartDate(trip.getStartDate());
             existingTrip.setTypeName(trip.getTypeName());
+            existingTrip.setTransportName(trip.getTransportName());
             return tripRepo.save(existingTrip);
         } else {
             return null;
