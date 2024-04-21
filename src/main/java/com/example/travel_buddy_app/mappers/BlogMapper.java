@@ -14,6 +14,7 @@ public interface BlogMapper {
     @Mapping(target = "title", source = "title")
     @Mapping(target = "country", source = "country")
     @Mapping(target = "city", source = "city")
+    @Mapping(target = "securityLevelRating", source = "securityLevelRating")
     @Mapping(target = "seasonVisited", source = "seasonVisited")
     @Mapping(target = "description", source = "description")
     BlogDto toDto(Blog blog);

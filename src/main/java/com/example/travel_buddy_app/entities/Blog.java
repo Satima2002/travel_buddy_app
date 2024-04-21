@@ -20,6 +20,8 @@ public class Blog {
     private String country;
     @Column(name = "city")
     private String city;
+    @Column(name="security_level_rating")
+    private String securityLevelRating;
 //    @Enumerated(EnumType.STRING)
     @Column(name = "season_visited")
     private String seasonVisited;
@@ -31,13 +33,16 @@ public class Blog {
     public Blog() {
     }
 
-    public Blog(Long id,Long userID, String title, String country, String city, String seasonVisited, String description) {
+    public Blog(Long id, String title, String country, String city,
+                String securityLevelRating, String seasonVisited,
+                String description, Long userID) {
         this.id = id;
-        this.userID=userID;
         this.title = title;
         this.country = country;
         this.city = city;
+        this.securityLevelRating = securityLevelRating;
         this.seasonVisited = seasonVisited;
         this.description = description;
+        this.userID = userID;
     }
 }
