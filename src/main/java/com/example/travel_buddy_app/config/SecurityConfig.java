@@ -33,25 +33,29 @@ public class SecurityConfig{
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests(authorize -> authorize
-                        .requestMatchers("/signup").permitAll() // Public resources
                         .requestMatchers("/").permitAll()
+                        .requestMatchers("/signup").permitAll() // Public resources
                         .requestMatchers("/signin").permitAll()
                         .anyRequest().authenticated() // All other requests require authentication
 
                 )
+
                 .formLogin(form -> form
                         .loginPage("/signin") // Custom login page
                         .permitAll() // Allow access to login page
                         .successForwardUrl("/home")
                         .defaultSuccessUrl("/home",true).permitAll()
+
                 )
+
+
                 .logout(logout -> logout
                         .logoutSuccessUrl("/index") // Redirect to home page after logout
                         .permitAll() // Allow access to logout endpoint
                         .invalidateHttpSession(true)
                         .clearAuthentication(true)
                         .logoutRequestMatcher(new AntPathRequestMatcher("/logout"))
-                        .logoutSuccessUrl("/signin?logout").permitAll()
+                        .logoutSuccessUrl("/signin").permitAll()
 
                 );
 

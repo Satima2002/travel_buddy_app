@@ -58,11 +58,11 @@ public class UserController {
 
     @PostMapping("/signup")
     public String signupSave(@ModelAttribute("user") UserDto userDto, Model model){
-       // User user=userService.findByUsername(userDto.getEmail());
-      //  if (user== null){
-         //   model.addAttribute("userexist",user);
-          //  return "signin";
-      //  }
+        User user=userService.findByUsername(userDto.getEmail());
+        if (user!= null){
+            model.addAttribute("userexist",user);
+            return "signin";
+        }
         userService.save(userDto);
         return "redirect:/signup?success";
     }

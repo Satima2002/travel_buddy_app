@@ -5,25 +5,38 @@ import com.example.travel_buddy_app.services.TripService;
 import com.example.travel_buddy_app.services.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
 import java.util.List;
 
-@RestController
-@RequestMapping(path = "trips")
+@Controller
+@RequestMapping
 public class TripController {
 
     @Autowired
     private TripService tripService;
 
-    @GetMapping
-    public List<Trip> findAllTrips(){
-        return tripService.findAllTrips();
+    @GetMapping("/trips")
+    public String getTrips(Model model) {
+        // Fetch list of items from backend
+        List<Trip> allTrips = tripService.findAllTrips();
+        // Add items to model attribute
+        model.addAttribute("trips", allTrips);
+
+        return "trips"; // Return Thymeleaf template name
     }
+
+  //  @GetMapping
+   // public List<Trip> findAllTrips(){
+    //    return tripService.findAllTrips();
+  //  }
 
     @PostMapping("/add-trip")
     public ResponseEntity<String> addNewTrip(@Validated @RequestBody Trip trip) {
