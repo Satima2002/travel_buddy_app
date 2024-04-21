@@ -44,10 +44,7 @@ public class TripService {
     }
 
     public void addNewTrip(Trip trip) {
-        Optional<Trip> newTripOptional = tripRepo.findTripEntityByID(trip.getId());
-        if (newTripOptional.isPresent()) {
-            throw new IllegalStateException("This trip id " + trip.getId() + " exists");
-        }
+
         tripRepo.save(trip);
     }
     public List<Trip> searchTrips(String searchText) {
