@@ -6,6 +6,7 @@ import com.example.travel_buddy_app.services.HostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,9 +18,14 @@ public class HostController {
     @Autowired
     private HostService hostService;
 
-    @GetMapping
-    public List<Host> findAllHosts(){
-        return hostService.findAllHosts();
+    @GetMapping("/hosts")
+    public String findAllHosts(Model model){
+
+        List<Host> allHosts = hostService.findAllHosts();
+        // Add items to model attribute
+        model.addAttribute("hosts", allHosts);
+
+        return "hosts"; // Return Thymeleaf template name
     }
 
 //    public Host addHost(@RequestBody String host, @RequestParam(name="user-id") String user_id) throws JsonProcessingException{

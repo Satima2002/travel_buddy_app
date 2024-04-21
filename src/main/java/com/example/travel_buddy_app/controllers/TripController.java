@@ -53,22 +53,22 @@ public class TripController {
             return ResponseEntity.noContent().build();
         }
     }
-    @PutMapping("/{id}")
+    @PutMapping("/trip/{id}")
     public Trip updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
         return tripService.updateTrip(id, trip);
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/trip/{id}")
     public void deleteTripById(@PathVariable("id") Long id) {
         tripService.deleteTripById(id);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/trip/{id}")
     public Trip getTripById(@PathVariable Long id) {
         return tripService.findTrip(id);
     }
 
-    @GetMapping("/filter")
+    @GetMapping("/filter-trip")
     public List<TripDto> findAll(@RequestParam(required = false) List<String> countries,
                                  @RequestParam(required = false) List<String> cities,
                                  @RequestParam(required = false) List<String> transports,

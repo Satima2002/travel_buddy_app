@@ -49,7 +49,7 @@
                     <a class="nav-link active" aria-current="page" th:href="@{hosts}" >#hosts</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page">#blogs</a>
+                    <a class="nav-link active" aria-current="page" th:href="@{blogs}">#blogs</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -76,14 +76,13 @@
 <body>
 <div class="container">
     <div class="user-grid">
-        <div th:each="trip : ${trips}" class="user-card">
+        <div th:each="host : ${hosts}" class="user-card">
             <div class="user-info">
-                <h4 th:text="${trip.getTypeName()+' trip to #'+trip.getDestinationCity() + ' #' + trip.getDestinationCountry()}"></h4>
-                <p th:text="'Start date: ' + ${trip.getStartDate()}"></p>
-                <p th:text="'End date: ' + ${trip.getEndDate()}"></p>
-                <p th:text="'Transport: ' + ${trip.getTransportName()}"></p>
-                <p th:text="'Approx. budget: ' + ${trip.getBudget()}"></p>
-                <p th:text="'Description: ' + ${trip.getDescription()}"></p>
+                <h4 th:text="${'Host available in #'+host.getCity() + ' #' + host.getCountry()}"></h4>
+                <p th:text="'House type :' + ${host.getHouseType()}"></p>
+                <p th:text="'Available from: ' + ${host.getAvailableStartDate()}"></p>
+                <p th:text="'Can host till: ' + ${host.getAvailableEndDate()}"></p>
+
             </div>
         </div>
     </div>
