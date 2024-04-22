@@ -19,6 +19,7 @@ public class HostDto {
     private Date availableEndDate;
     private String houseType;
     private Long user_id;
+    private String preference;
 
     @Override
     public String toString() {
@@ -30,6 +31,7 @@ public class HostDto {
                 ", availableEndDate=" + availableEndDate +
                 ", houseType='" + houseType + '\'' +
                 ", user_id=" + user_id +
+                ", preference=" + preference +
                 '}';
     }
 
@@ -87,5 +89,13 @@ public class HostDto {
 
     public void setUser_id(Long user_id) {
         this.user_id = user_id;
+    }
+
+    public String getPreference() {
+        return preference;
+    }
+
+    public void setPreference(String preference) {
+        this.preference = preference;
     }
 }

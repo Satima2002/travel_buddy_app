@@ -30,6 +30,8 @@ public class Host {
     private String houseType;
     @Column(name = "user_id")
     private Long user_id;
+    @Column(name="preferences")
+    private String preference;
 
 
     public Host(Long id, String country, String city, Date availableStartDate, Date availableEndDate, String houseType, Long user_id) {
@@ -40,6 +42,7 @@ public class Host {
         this.availableEndDate = availableEndDate;
         this.houseType = houseType;
         this.user_id = user_id;
+        this.preference=preference;
     }
 
     public Host() {

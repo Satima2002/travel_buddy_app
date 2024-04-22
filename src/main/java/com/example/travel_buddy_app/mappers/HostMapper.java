@@ -15,5 +15,6 @@ public interface HostMapper {
     @Mapping(target = "availableEndDate", source = "availableEndDate")
     @Mapping(target = "houseType", source = "houseType")
     @Mapping(target = "user_id", source = "user_id")
+    @Mapping(target = "preference", source = "preference")
     HostDto toDto(Host host);
 }
