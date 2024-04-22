@@ -10,7 +10,7 @@
             width: 400px;
             margin: 50px auto;
             padding: 20px;
-            background-color: #f5f5f5;
+            background-color: #F9E897;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             font-family: Arial, sans-serif;
@@ -35,7 +35,7 @@
         input[type="email"],
         input[type="password"],
         select {
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
@@ -43,7 +43,7 @@
 
         button {
             display: block;
-            width: 100%;
+            width: calc(100% - 22px);
             padding: 10px;
             background-color: #007bff;
             color: #fff;
@@ -74,6 +74,20 @@
             background-color: #ef5350; /* Red */
             color: #fff;
         }
+
+        /* styling for "sign up" link */
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -100,8 +114,9 @@
             <input type="password" id="password" name="password" required>
         </div>
         <button type="submit">Login</button>
-        <span>Register here <a th:href="@{/signup}">Sign up</a></span>
     </form>
+    <br>
+    <span>Register here <a th:href="@{/signup}">Sign up</a></span>
 </div>
 </body>
 </html>

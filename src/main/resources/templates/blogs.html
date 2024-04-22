@@ -29,14 +29,54 @@
             margin: 5px 0;
             color: #666;
         }
+
+        /*navbar styling */
+        .navbar-nav .nav-link {
+            color: #FFC107 !important;
+        }
+        .navbar-brand {
+            color: #FFC107 !important;
+            font-weight: bold; /* Make the text bold */
+        }
+
+        /* Change button color*/
+        .btn-outline-success {
+            color: #000000;
+            border-color: #FFC107;
+            background-color: #FFC107;
+        }
+
+        .btn-outline-success:hover {
+            color: #000000;
+            border-color: #000000;
+            background-color: #FFC107;
+        }
+
+        /*dropdown styling */
+        .dropdown-menu {
+            background-color: #124076;
+            border: none;
+        }
+
+        .dropdown-item {
+            color: #FFC107 !important;
+        }
+
+        .dropdown-item:hover {
+            background-color: #0d3d71;
+        }
+
+        .dropdown-divider {
+            border-top: 1px solid #FFC107;
+        }
     </style>
 </head>
 <body>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #124076; border: 1px solid #F9E897;">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#">Your dashboard</a>
+        <a class="navbar-brand" href="#">Dashboard</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
