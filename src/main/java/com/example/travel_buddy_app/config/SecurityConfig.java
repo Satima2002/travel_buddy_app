@@ -9,17 +9,21 @@ import org.springframework.context.annotation.Configuration;
 
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
+import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
-
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 
 @Configuration
 @EnableWebSecurity
-public class SecurityConfig{
+public class SecurityConfig implements WebMvcConfigurer {
 
     @Autowired
     CustomUserDetailsServices customUserDetailsServices;
@@ -29,13 +33,23 @@ public class SecurityConfig{
         return new BCryptPasswordEncoder();
     }
 
+
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {         registry                 .addResourceHandler("/static/**")                 .addResourceLocations("classpath:/static/");     }
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+
+
+        //http.authorizeRequests().antMatchers(HttpMethod.GET, "/js/**", "/css/**", "/img/**" ,"/pressiplus", "/public/**", "/index", "/", "/login").permitAll();
         http
                 .authorizeRequests(authorize -> authorize
+
+                        .requestMatchers("/static/**").permitAll()
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/signup").permitAll() // Public resources
                         .requestMatchers("/signin").permitAll()
+                        .requestMatchers("/About").permitAll()
                         .anyRequest().authenticated() // All other requests require authentication
 
                 )
@@ -47,7 +61,6 @@ public class SecurityConfig{
                         .defaultSuccessUrl("/home",true).permitAll()
 
                 )
-
 
                 .logout(logout -> logout
                         .logoutSuccessUrl("/index") // Redirect to home page after logout
@@ -62,10 +75,12 @@ public class SecurityConfig{
         return http.build();
     }
 
+
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception{
 
         auth.userDetailsService(customUserDetailsServices).passwordEncoder(passwordEncoder());
 
     }
+
 }
