@@ -79,9 +79,11 @@
         <div th:each="blog : ${blogs}" class="user-card">
             <div class="user-info">
                 <h4 th:text="${blog.getTitle()}"></h4>
-                <p th:text="'City visited: ' + ${blog.getCity()}"></p>
+                <p th:text="'City visited: ' + ${blog.getCity()}+${blog.getCountry()}"></p>
                 <p th:text="'Season visited: ' + ${blog.getSeasonVisited()}"></p>
+                <p th:text="'Rating the security level: ' + ${blog.getSecurityLevelRating()}"></p>
                 <p th:text="'Impression: ' + ${blog.getDescription()}"></p>
+
             </div>
         </div>
     </div>

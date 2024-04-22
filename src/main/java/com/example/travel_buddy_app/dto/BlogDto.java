@@ -14,6 +14,7 @@ public class BlogDto {
     private String title;
     private String country;
     private String city;
+    private String  securityLevelRating;
     private String seasonVisited;
     private String description;
     private Long userID;
@@ -25,6 +26,7 @@ public class BlogDto {
                 ", title='" + title + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
+                ", securityLevelRating='" + securityLevelRating + '\'' +
                 ", seasonVisited='" + seasonVisited + '\'' +
                 ", description='" + description + '\'' +
                 '}';
@@ -60,6 +62,14 @@ public class BlogDto {
 
     public void setCity(String city) {
         this.city = city;
+    }
+
+    public String getSecurityLevelRating() {
+        return securityLevelRating;
+    }
+
+    public void setSecurityLevelRating(String securityLevelRating) {
+        this.securityLevelRating = securityLevelRating;
     }
 
     public String getSeasonVisited() {

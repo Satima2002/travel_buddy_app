@@ -95,7 +95,7 @@ public class BlogController {
 //    /filter?seasonVisited=winter: Retrieves blogs visited in the winter season.
 //    /filter?countries=USA&cities=New+York: Retrieves blogs from the USA, specifically from New York City.
 //    /filter?seasonVisited=summer&countries=France: Retrieves blogs visited in the summer season and located in France.
-    @GetMapping("/filter")
+    @GetMapping("/filter-blog")
     public List<BlogDto> findAll(@RequestParam(required = false) String seasonVisited,
                                  @RequestParam(required = false) List<String> countries,
                                  @RequestParam(required = false) List<String> cities) {

@@ -87,7 +87,21 @@ VALUES
 ('City Break in Amsterdam', 'Netherlands', 'Amsterdam', 'summer', 'Exploring the historic canals and museums of Amsterdam.', 9),
 ('Beach Vacation in Maldives', 'Maldives', 'Maldives', 'winter', 'Relaxing in luxury on the pristine beaches of the Maldives.', 10);
 
-
+INSERT INTO blog (title, country, city, season_visited, description, user_id, security_level_rating)
+VALUES
+    ('Exploring the Big Apple', 'USA', 'New York', 'Summer', 'New York City was bustling with energy!', 702, 'High'),
+    ('Adventures in Paris', 'France', 'Paris', 'Spring', 'The Eiffel Tower was breathtaking!', 552, 'Medium'),
+    ('A Winter Retreat in the Swiss Alps', 'Switzerland', 'Zurich', 'Winter', 'The skiing conditions were perfect.', 552, 'High'),
+    ('Sunny Days in Barcelona', 'Spain', 'Barcelona', 'Summer', 'The beaches were beautiful.', 552, 'Low'),
+    ('Discovering Tokyo', 'Japan', 'Tokyo', 'Spring', 'The cherry blossoms were in full bloom.', 702, 'Medium'),
+    ('Weekend Getaway to Rome', 'Italy', 'Rome', 'Fall', 'The historical sites were awe-inspiring.', 1003, 'High'),
+    -- Add more sample data here
+    ('Exploring the Great Barrier Reef', 'Australia', 'Cairns', 'Summer', 'Snorkeling with colorful fish was unforgettable.', 1003, 'High'),
+    ('City Lights of Hong Kong', 'China', 'Hong Kong', 'Winter', 'The skyline at night was mesmerizing.', 702, 'Medium'),
+    ('Hiking Adventures in the Rocky Mountains', 'Canada', 'Banff', 'Fall', 'The views from the mountain peaks were breathtaking.', 1003, 'High'),
+    ('Cultural Immersion in Kyoto', 'Japan', 'Kyoto', 'Spring', 'Experiencing traditional tea ceremonies was enlightening.', 1003, 'Medium'),
+    ('Island Paradise in the Maldives', 'Maldives', 'Male', 'Summer', 'Relaxing on pristine beaches was pure bliss.', 1003, 'Low'),
+    ('Exploring the Ancient Ruins of Athens', 'Greece', 'Athens', 'Spring', 'Learning about Greek history was fascinating.', 702, 'High');
 select * from blog;
 
 INSERT INTO host (country, city, available_start_date, available_end_date, house_type, user_id)
