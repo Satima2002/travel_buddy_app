@@ -67,4 +67,5 @@ public class BlogController {
         return blogService.findAll(seasonVisited, countries, cities);
     }
 
+
 }
