@@ -58,7 +58,7 @@ public class BlogController {
         blogService.deleteBlogById(id);
     }
 
-<<<<<<< Thymeleaf-trips-dashboard
+
     @PutMapping("/blog/{id}/title")
     public ResponseEntity<Blog> updateTitle(@PathVariable Long id, @RequestBody Blog newTitle) {
         try {
@@ -89,9 +89,6 @@ public class BlogController {
         }
     }
     @PutMapping("/blog/{id}")
-=======
-    @PutMapping("/{id}")
->>>>>>> main
     public Blog updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         return blogService.updateBlog(id, blog);
     }
