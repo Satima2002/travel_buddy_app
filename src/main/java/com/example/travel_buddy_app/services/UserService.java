@@ -60,6 +60,7 @@ public class UserService implements UserDetailsService {
         User user = createUserFromSignUpDto(signUpDto);
         userRepo.save(user);
         return new ResponseEntity<>("User registered successfully", HttpStatus.OK);
+
     }
 
     private void validateSignUpDto(SignUpDto signUpDto) {
