@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Trip</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f2f2f2;
+        margin: 0;
+        padding: 0;
+    }
+    .container {
+        width: 80%;
+        margin: auto;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    input[type="text"],
+    input[type="date"],
+    input[type="number"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+
+    textarea {
+        height: 100px;
+    }
+
+    button {
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        padding: 10px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+    }
+
+    button:hover {
+        background-color: #0056b3;
+    }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Add Your Trip to Find your Travel Buddy</h1>
+    <form action="/trips/add" method="post">
+        <div class="form-group">
+            <label for="destinationCountry">Which country are you planning to visit?</label>
+            <input type="text" id="destinationCountry" name="destinationCountry" placeholder="Type to search...">
+            <ul id="countryList"></ul>
+
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                const inputField = document.getElementById('destinationCountry');
+                const countryList = document.getElementById('countryList');
+
+                inputField.addEventListener('input', function() {
+                    const userInput = inputField.value.toLowerCase();
+
+                    // Make an HTTP GET request to fetch the list of countries
+                    fetch('https://restcountries.com/v3.1/all')
+                        .then(response => response.json())
+                        .then(data => {
+                            // Filter the list of countries based on user input
+                            const filteredCountries = data.filter(country => country.name.common.toLowerCase().includes(userInput));
+
+                            // Display the filtered countries
+                            displayCountries(filteredCountries);
+                        })
+                        .catch(error => console.error('Error fetching countries:', error));
+                });
+
+                function displayCountries(countries) {
+                    countryList.innerHTML = '';
+                    countries.forEach(country => {
+                        const li = document.createElement('li');
+                        li.textContent = country.name.common;
+                        countryList.appendChild(li);
+
+                        li.addEventListener('click', function() {
+                            inputField.value = country.name.common;
+                            countryList.innerHTML = '';
+                        });
+                    });
+                }
+                /*]]>*/
+            </script>
+
+        </div>
+        <div class="form-group">
+            <label for="destinationCity">Which city in the chosen country are you planning to visit?</label>
+            <input type="text" id="destinationCity" name="destinationCity" required>
+        </div>
+        <div class="form-group">
+            <label for="startDate">When does your trip start?</label>
+            <input type="date" id="startDate" name="startDate" required>
+        </div>
+        <div class="form-group">
+            <label for="endDate">When does your trip end?</label>
+            <input type="date" id="endDate" name="endDate" required>
+        </div>
+        <div class="form-group">
+            <label for="budget">What is your estimated budget for this trip?</label>
+            <input type="number" id="budget" name="budget" required>
+        </div>
+        <div class="form-group">
+            <label for="typeName">What type of travel is this? </label>
+            <select type="text" id="typeName" name="typeName" required>
+                <option value="Adventure">Adventure</option>
+                <option value="Leisure">Leisure</option>
+                <option value="Family">Family</option>
+                <option value="CulturalImmersion">Cultural Immersion</option>
+                <option value="Educational">Educational</option>
+                <option value="Volunteer">Volunteer</option>
+                <option value="Medical">Medical</option>
+                <option value="Cruise">Cruise</option>
+                <option value="RoadTrip">Road Trip</option>
+                <option value="Historical">Historical</option>
+                <option value="BeachVacation">Beach Vacation</option>
+                <option value="LuxuryTravel">Luxury Travel</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="transportName">What is your preferred mode of transport during the trip?</label>
+            <select type="text" id="transportName" name="transportName" required>
+                <option value="Public">Public transport</option>
+                <option value="Walking">Walking</option>
+                <option value="Bicycle">Bicycle</option>
+                <option value="Car">Car</option>
+                <option value="Ridesharing">Ridesharing</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">Do you have any additional details or special requirements for this trip?</label>
+            <textarea id="description" name="description"></textarea>
+        </div>
+        <button type="submit">Add Trip</button>
+    </form>
+</div>
+</body>
+</html>
