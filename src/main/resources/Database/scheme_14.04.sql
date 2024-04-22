@@ -3,12 +3,9 @@ create table users (
 id serial Primary Key,
 first_name varchar(255) not null,
 last_name varchar(255) not null,
-user_name varchar(255) not null,
-dob DATE not null,
 gender varchar(255) not null,
 email varchar(255) not null,
 password varchar(255) not null,
-profile_photo varchar(255) not null,
 description varchar(500) null
 );
 
