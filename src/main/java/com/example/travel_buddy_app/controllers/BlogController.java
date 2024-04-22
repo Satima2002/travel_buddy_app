@@ -59,6 +59,9 @@ public class BlogController {
     }
 
 
+
+
+    
     @PutMapping("/blog/{id}/title")
     public ResponseEntity<Blog> updateTitle(@PathVariable Long id, @RequestBody Blog newTitle) {
         try {
