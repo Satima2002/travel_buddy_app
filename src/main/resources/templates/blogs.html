@@ -109,9 +109,9 @@
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
+            <span sec:authorize="isAuthenticated"><a th:href="@{/}" style="color: #FFC107;">Log out</a></span>
         </div>
     </div>
-    <span sec:authorize="isAuthenticated"><a th:href="@{/}">Log out</a></span>
 </nav>
 <body>
 <div class="container">
