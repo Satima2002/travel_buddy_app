@@ -29,7 +29,6 @@ public class TripController {
         List<Trip> allTrips = tripService.findAllTrips();
         // Add items to model attribute
         model.addAttribute("trips", allTrips);
-
         return "trips"; // Return Thymeleaf template name
     }
 

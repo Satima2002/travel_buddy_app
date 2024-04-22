@@ -34,6 +34,11 @@ public class UserController {
 
         return "index";
     }
+    @GetMapping("/About")
+    public String about(){
+
+        return "About";
+    }
 
     @GetMapping("/home")
     public String home(Model model, Principal principal){

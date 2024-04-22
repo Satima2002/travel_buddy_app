@@ -31,7 +31,6 @@ public class Host {
     @Column(name = "user_id")
     private Long user_id;
 
-
     public Host(Long id, String country, String city, Date availableStartDate, Date availableEndDate, String houseType, Long user_id) {
         this.id = id;
         this.country = country;
