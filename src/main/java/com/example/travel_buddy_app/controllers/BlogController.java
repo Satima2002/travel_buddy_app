@@ -58,13 +58,6 @@ public class BlogController {
         blogService.deleteBlogById(id);
     }
 
-
-
-
-    
-
-
-    
     @PutMapping("/blog/{id}/title")
     public ResponseEntity<Blog> updateTitle(@PathVariable Long id, @RequestBody Blog newTitle) {
         try {
@@ -98,7 +91,6 @@ public class BlogController {
     public Blog updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         return blogService.updateBlog(id, blog);
     }
-
 
 //    /filter?seasonVisited=winter: Retrieves blogs visited in the winter season.
 //    /filter?countries=USA&cities=New+York: Retrieves blogs from the USA, specifically from New York City.
