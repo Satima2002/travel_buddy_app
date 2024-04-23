@@ -2,30 +2,18 @@ package com.example.travel_buddy_app.controllers;
 
 import com.example.travel_buddy_app.dto.BlogDto;
 import com.example.travel_buddy_app.entities.Blog;
-import com.example.travel_buddy_app.entities.Host;
-import com.example.travel_buddy_app.entities.Trip;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import com.example.travel_buddy_app.services.BlogService;
 import java.util.List;
-import java.util.List;
 
 @Controller
-@RequestMapping
 public class BlogController {
 
-    @Autowired
-    private final BlogService blogService;
-
-
-    public BlogController(BlogService blogService) {
+        private  BlogService blogService;
+        public BlogController(BlogService blogService) {
         this.blogService = blogService;
     }
 
@@ -37,28 +25,42 @@ public class BlogController {
 
         return "blogs"; // Return Thymeleaf template name
     }
-    @GetMapping("/blog/{id}")
-    public Blog getBlogById(@PathVariable("id") long id) {
-        return blogService.getBlogById(id);
+    @GetMapping("/add-blog")
+    public String showBlogForm(Model model) {
+            Blog blog=new Blog();
+        model.addAttribute("blog", blog);
+        return "add-blog";
+
     }
 
-    @PostMapping("/blog/add-blog")
-    public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
-        try {
-            blogService.validatePostBlog(blog);
-            blogService.addNewBlog(blog);
-            return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
-        }  catch (IllegalArgumentException ex) {
-            return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
-        }
+    @PostMapping("/add-blog")
+    public String blogSave(@ModelAttribute("blog") Blog blog, Model model){
+        blogService.saveBlog(blog);
+        return "redirect:/blogs";
     }
 
-    @DeleteMapping("/blog/{id}")
-    public void deleteBlogById(@PathVariable("id") Long id) {
-        blogService.deleteBlogById(id);
-    }
+   // @GetMapping("/blog/{id}")
+    //public Blog getBlogById(@PathVariable("id") long id) {
+    //    return blogService.getBlogById(id);
+  //  }
 
-    @PutMapping("/blog/{id}/title")
+   // @PostMapping("/blog/add-blog")
+   // public ResponseEntity<?> addNewBlog(@RequestBody Blog blog) {
+        //try {
+        //    blogService.validatePostBlog(blog);
+         //   blogService.addNewBlog(blog);
+           // return new ResponseEntity<>("Blog added successfully.", HttpStatus.CREATED);
+      //  }  catch (IllegalArgumentException ex) {
+        //    return new ResponseEntity<>("Title, country, city and season are required fields.", HttpStatus.BAD_REQUEST);
+       // }
+  //  }
+
+   // @DeleteMapping("/blog/{id}")
+    //public void deleteBlogById(@PathVariable("id") Long id) {
+   //     blogService.deleteBlogById(id);
+   // }
+
+  /*  @PutMapping("/blog/{id}/title")
     public ResponseEntity<Blog> updateTitle(@PathVariable Long id, @RequestBody Blog newTitle) {
         try {
             blogService.updateTitle(id, newTitle);
@@ -101,5 +103,5 @@ public class BlogController {
                                  @RequestParam(required = false) List<String> cities) {
         return blogService.findAll(seasonVisited, countries, cities);
     }
-
+*/
 }

@@ -10,19 +10,18 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class BlogDto {
-    private Long id;
+    //private Long id;
     private String title;
     private String country;
     private String city;
     private String  securityLevelRating;
     private String seasonVisited;
     private String description;
-    private Long userID;
 
     @Override
     public String toString() {
         return "BlogDto{" +
-                "id=" + id +
+                //"id=" + id +
                 ", title='" + title + '\'' +
                 ", country='" + country + '\'' +
                 ", city='" + city + '\'' +
@@ -32,13 +31,13 @@ public class BlogDto {
                 '}';
     }
 
-    public Long getId() {
-        return id;
-    }
+  //  public Long getId() {
+    //    return id;
+   // }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+   // public void setId(Long id) {
+     //   this.id = id;
+   // }
 
     public String getTitle() {
         return title;
@@ -88,11 +87,11 @@ public class BlogDto {
         this.description = description;
     }
 
-    public Long getUserID() {
-        return userID;
-    }
+   // public Long getUserID() {
+       // return userID;
+    //}
 
-    public void setUserID(Long userID) {
-        this.userID = userID;
-    }
+    //public void setUserID(Long userID) {
+      ///  this.userID = userID;
+    //}
 }

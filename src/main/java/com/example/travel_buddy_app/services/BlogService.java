@@ -1,7 +1,9 @@
 package com.example.travel_buddy_app.services;
 
 import com.example.travel_buddy_app.dto.BlogDto;
+import com.example.travel_buddy_app.dto.UserDto;
 import com.example.travel_buddy_app.entities.Blog;
+import com.example.travel_buddy_app.entities.User;
 import com.example.travel_buddy_app.mappers.BlogMapper;
 import com.example.travel_buddy_app.repositories.BlogRepository;
 import io.micrometer.common.util.StringUtils;
@@ -46,6 +48,11 @@ public class BlogService {
         if (newBlogOptional.isPresent()) {
             throw new IllegalStateException("This blog id " + blog.getId() + " exists");
         }
+    }
+
+    public Blog saveBlog(Blog blog){
+       // Blog blog=new Blog(blogDto.getTitle(),blogDto.getCountry(), blogDto.getCity(),blogDto.getSecurityLevelRating(),blogDto.getSeasonVisited(), blogDto.getDescription());
+        return blogRepository.save(blog);
     }
     public void addNewBlog(Blog blog) {
         blogRepository.save(blog);

@@ -46,9 +46,8 @@ country varchar(255) not null,
 city varchar(255) not null,
 season_visited varchar(255) not null,
 description varchar(500) null,
-user_id int not null,
-security_level_rating varchar(255) not null,
-FOREIGN KEY (user_id) references users(id) on delete cascade
+security_level_rating varchar(255) not null
+
 );
 
 create table host (

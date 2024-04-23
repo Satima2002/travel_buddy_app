@@ -3,12 +3,14 @@ package com.example.travel_buddy_app.entities;
 //import com.example.travel_buddy_app.enums.Season;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Table (name = "blog")
 @Getter
 @Setter
+@NoArgsConstructor
 public class Blog {
     @Id
     @Column(name = "id")
@@ -27,22 +29,17 @@ public class Blog {
     private String seasonVisited;
     @Column(name = "description")
     private String description;
-    @Column(name = "user_id")
-    private Long userID;
 
-    public Blog() {
-    }
-
-    public Blog(Long id, String title, String country, String city,
+    public Blog( String title, String country, String city,
                 String securityLevelRating, String seasonVisited,
-                String description, Long userID) {
-        this.id = id;
+                String description) {
+        super();
         this.title = title;
         this.country = country;
         this.city = city;
         this.securityLevelRating = securityLevelRating;
         this.seasonVisited = seasonVisited;
         this.description = description;
-        this.userID = userID;
+
     }
 }

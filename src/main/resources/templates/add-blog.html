@@ -1,10 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Blog</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <!-- Add your custom CSS file if needed -->
+    <style>
+        .container {
+            width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: #F9E897;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-weight: bold;
+
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="text"],
+        input[type="password"],
+        input[type="email"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        select {
+            width: calc(106% - 22px);;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #124076;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+        }
+
+        a {
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0056b3;
+            text-decoration: underline;
+        }
+        .background-image {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('static/img/background.jpg'); /* Replace 'path/to/your/image.jpg' with the path to your image */
+            background-size: cover;
+            z-index: -1; /* Make sure the background image is behind other content */
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <h1>Add Blog</h1>
+    <form th:action="@{/add-blog}" method="post" role="form" th:object="${blog}">
+        <div class="form-group">
+            <label for="title">Title of your blog:</label>
+            <input type="text" th:field="*{title}" class="form-control" id="title" name="title" required>
+        </div>
+        <div class="form-group">
+            <label for="destinationCountry">Which country did you visit?</label>
+            <input type="text" th:field="*{country}"  id="destinationCountry" name="destinationCountry" placeholder="Type to search...">
+            <ul id="countryList"></ul>
 
+            <script th:inline="javascript">
+                /*<![CDATA[*/
+                const inputField = document.getElementById('destinationCountry');
+                const countryList = document.getElementById('countryList');
+
+                inputField.addEventListener('input', function() {
+                    const userInput = inputField.value.toLowerCase();
+
+                    // Make an HTTP GET request to fetch the list of countries
+                    fetch('https://restcountries.com/v3.1/all')
+                        .then(response => response.json())
+                        .then(data => {
+                            // Filter the list of countries based on user input
+                            const filteredCountries = data.filter(country => country.name.common.toLowerCase().includes(userInput));
+
+                            // Display the filtered countries
+                            displayCountries(filteredCountries);
+                        })
+                        .catch(error => console.error('Error fetching countries:', error));
+                });
+
+                function displayCountries(countries) {
+                    countryList.innerHTML = '';
+                    countries.forEach(country => {
+                        const li = document.createElement('li');
+                        li.textContent = country.name.common;
+                        countryList.appendChild(li);
+
+                        li.addEventListener('click', function() {
+                            inputField.value = country.name.common;
+                            countryList.innerHTML = '';
+                        });
+                    });
+                }
+                /*]]>*/
+            </script>
+
+        </div>
+        <div class="form-group">
+            <label for="city">Which city did you visit?</label>
+            <input type="text" th:field="*{city}" class="form-control" id="city" name="city" required>
+        </div>
+        <div class="form-group">
+            <label for="securityLevelRating">How would you rate the security level?</label>
+            <select type="text" class="form-control" th:field="*{securityLevelRating}"  id="securityLevelRating" name="securityLevelRating" required>
+                <option value="High">High</option>
+                <option value="Medium">Medium</option>
+                <option value="Low">Low</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="seasonVisited">In which season you visited?</label>
+            <select type="text" th:field="*{seasonVisited}" class="form-control"  id="seasonVisited" name="seasonVisited" required>
+                <option value="Winter">Winter</option>
+                <option value="Spring">Spring</option>
+                <option value="Summer">Summer</option>
+                <option value="Autumn">Autumn</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="description">What's your overall impression?</label>
+            <textarea th:field="*{description}" class="form-control" id="description" name="description" rows="5" required></textarea>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+</div>
 </body>
 </html>
