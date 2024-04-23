@@ -39,6 +39,14 @@ public class BlogController {
         return "redirect:/blogs";
     }
 
+    @GetMapping("/search-blogs")
+    public String searchBlog(@RequestParam(name = "query", required = false) String query, Model model) {
+        List<Blog> foundBlogs = blogService.searchBlog(query);
+        model.addAttribute("searchResults", foundBlogs);
+
+        return "search-blogs";
+    }
+
    // @GetMapping("/blog/{id}")
     //public Blog getBlogById(@PathVariable("id") long id) {
     //    return blogService.getBlogById(id);
@@ -80,15 +88,7 @@ public class BlogController {
         }
     }
 
-    @GetMapping("/search-blog")
-    public ResponseEntity<List<Blog>> searchBlogs(@RequestParam String searchText) {
-        List<Blog> foundTrips = blogService.searchBlog(searchText);
-        if (!foundTrips.isEmpty()) {
-            return ResponseEntity.ok(foundTrips);
-        } else {
-            return ResponseEntity.noContent().build();
-        }
-    }
+
     @PutMapping("/blog/{id}")
     public Blog updateBlog(@PathVariable Long id, @RequestBody Blog blog) {
         return blogService.updateBlog(id, blog);

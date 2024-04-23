@@ -49,7 +49,7 @@ public class SecurityConfig implements WebMvcConfigurer {
                         .requestMatchers("/").permitAll()
                         .requestMatchers("/signup").permitAll() // Public resources
                         .requestMatchers("/signin").permitAll()
-                        .requestMatchers("/About").permitAll()
+                        .requestMatchers("/about").permitAll()
                         .anyRequest().authenticated() // All other requests require authentication
 
                 )

@@ -15,7 +15,7 @@
             font-family: Arial, sans-serif;
         }
 
-        h1 {
+        h1,h2 {
             text-align: center;
             margin-bottom: 20px;
             font-weight: bold;
@@ -99,7 +99,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('static/img/background.jpg'); /* Replace 'path/to/your/image.jpg' with the path to your image */
+            background-image: url('static/img/together.jpg'); /* Replace 'path/to/your/image.jpg' with the path to your image */
             background-size: cover;
             z-index: -1; /* Make sure the background image is behind other content */
         }
@@ -115,7 +115,7 @@
         </div>
     </div>
 
-    <h1>User Registration</h1>
+    <h2>User Registration for Travel Buddy</h2>
     <form method="post"  th:action="@{/signup}" role="form" th:object="${user}">
         <div class="form-group">
             <label for="firstName">First Name</label>

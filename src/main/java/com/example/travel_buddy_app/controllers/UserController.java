@@ -3,7 +3,6 @@ package com.example.travel_buddy_app.controllers;
 
 import com.example.travel_buddy_app.dto.UserDto;
 import com.example.travel_buddy_app.entities.User;
-import com.example.travel_buddy_app.services.CustomUserDetailsServices;
 import com.example.travel_buddy_app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -34,10 +33,9 @@ public class UserController {
 
         return "index";
     }
-    @GetMapping("/About")
+    @GetMapping("/about")
     public String about(){
-
-        return "About";
+        return "about";
     }
 
     @GetMapping("/home")

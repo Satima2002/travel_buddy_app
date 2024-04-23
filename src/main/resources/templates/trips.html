@@ -64,12 +64,9 @@
             background-color: #0d3d71;
         }
 
-        .dropdown-divider {
-            border-top: 1px solid #FFC107;
-        }
     </style>
 </head>
-<body>
+<body class="image">
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #124076; border: 1px solid #F9E897;">
@@ -102,8 +99,8 @@
                 </li>
 
             </ul>
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <form th:action="@{/search-trips}" method="get">
+                <input type="text" name="query" placeholder="Search trips...">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form>
         </div>

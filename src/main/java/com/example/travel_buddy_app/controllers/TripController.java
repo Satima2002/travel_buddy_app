@@ -1,5 +1,6 @@
 package com.example.travel_buddy_app.controllers;
 import com.example.travel_buddy_app.dto.TripDto;
+import com.example.travel_buddy_app.entities.Blog;
 import com.example.travel_buddy_app.entities.Trip;
 import com.example.travel_buddy_app.services.TripService;
 import com.example.travel_buddy_app.services.TripService;
@@ -43,15 +44,13 @@ public class TripController {
         return ResponseEntity.ok("Trip created successfully");
     }
 
-    @GetMapping("/search-trip")
-    public ResponseEntity<List<Trip>> searchTrips(@RequestParam String searchText) {
-        List<Trip> foundTrips = tripService.searchTrips(searchText);
-        if (!foundTrips.isEmpty()) {
-            return ResponseEntity.ok(foundTrips);
-        } else {
-            return ResponseEntity.noContent().build();
-        }
+    @GetMapping("/search-trips")
+    public String searchTrip(@RequestParam(name = "query", required = false) String query, Model model) {
+        List<Trip> foundTrips = tripService.searchTrips(query);
+        model.addAttribute("searchResults", foundTrips);
+        return "search-trips";
     }
+
     @PutMapping("/trip/{id}")
     public Trip updateTrip(@PathVariable Long id, @RequestBody Trip trip) {
         return tripService.updateTrip(id, trip);
